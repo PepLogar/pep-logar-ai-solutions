@@ -38,7 +38,7 @@ test("server-renders the Pep Logar AI Solutions concept", async () => {
   assert.match(html, /<input(?=[^>]*name="consent")(?=[^>]*type="checkbox")[^>]*>/);
   assert.match(html, /Preparar consulta/);
   assert.match(html, /Esta web no almacena tus datos/);
-  assert.match(html, /property="og:image" content="http:\/\/localhost(?::3000)?\/og\.png"/);
+  assert.match(html, /property="og:image" content="https:\/\/aisolutions\.peplogar\.com\/og\.png"/);
   assert.doesNotMatch(html, /codex-preview|SkeletonPreview|react-loading-skeleton/i);
 });
 

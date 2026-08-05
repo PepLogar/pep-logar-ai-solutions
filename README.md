@@ -20,10 +20,23 @@ npm run build
 node --test tests/rendered-html.test.mjs
 ```
 
+## Carpeta lista para producción
+
+La carpeta `production/` contiene una exportación estática completa para
+servidores web como Plesk. Para regenerarla:
+
+```bash
+npm run build:production
+```
+
+En Plesk, configura como raíz de documentos la carpeta `production` del
+repositorio. No requiere Node.js ni un proceso de servidor en producción.
+
 ## Estructura principal
 
 - `app/`: página, formulario de contacto, estilos y metadatos.
 - `public/og.png`: imagen utilizada al compartir la web.
+- `production/`: versión compilada y lista para publicar en el servidor web.
 - `CONCEPTO.md`: posicionamiento, arquitectura de marca y decisiones de producto.
 - `tests/`: comprobaciones del HTML renderizado.
 

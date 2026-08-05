@@ -6,6 +6,7 @@ const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://aisolutions.peplogar.com"),
   title: "Pep Logar AI Solutions | Software e IA que hacen avanzar el trabajo",
   description: "Diseñamos agentes, conexiones MCP y software potenciado con IA para automatizar procesos de empresa de forma útil, progresiva y controlable.",
   openGraph: {
