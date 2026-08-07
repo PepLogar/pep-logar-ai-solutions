@@ -2,13 +2,13 @@ import assert from "node:assert/strict";
 import { access, readFile } from "node:fs/promises";
 import test from "node:test";
 
-async function render() {
+async function render(pathname = "/") {
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);
   workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}`);
   const { default: worker } = await import(workerUrl.href);
 
   return worker.fetch(
-    new Request("http://localhost/", { headers: { accept: "text/html" } }),
+    new Request(new URL(pathname, "http://localhost/"), { headers: { accept: "text/html" } }),
     { ASSETS: { fetch: async () => new Response("Not found", { status: 404 }) } },
     { waitUntil() {}, passThroughOnException() {} },
   );
@@ -42,14 +42,38 @@ test("server-renders the Pep Logar AI Solutions concept", async () => {
   assert.doesNotMatch(html, /codex-preview|SkeletonPreview|react-loading-skeleton/i);
 });
 
+test("server-renders the product catalog and product landing page", async () => {
+  const [catalogResponse, productResponse] = await Promise.all([
+    render("/productos"),
+    render("/productos/frontend-product-editor-ai"),
+  ]);
+
+  assert.equal(catalogResponse.status, 200);
+  assert.equal(productResponse.status, 200);
+
+  const [catalog, product] = await Promise.all([catalogResponse.text(), productResponse.text()]);
+  assert.match(catalog, /Software que resuelve/);
+  assert.match(catalog, /Frontend Product Editor \+ AI/);
+  assert.match(catalog, /href="\/productos\/frontend-product-editor-ai"/);
+
+  assert.match(product, /Gestiona tu catálogo/);
+  assert.match(product, /PrestaShop 1\.6/);
+  assert.match(product, /Sin módulos/);
+  assert.match(product, /demo-fpe-ai\.mp4/);
+  assert.match(product, /og-product\.png/);
+  assert.match(product, /Solicitar acceso/);
+  assert.match(product, /Preguntas frecuentes/);
+});
+
 test("ships the final concept without starter artifacts", async () => {
-  const [page, layout, packageJson] = await Promise.all([
+  const [page, siteChrome, layout, packageJson] = await Promise.all([
     readFile(new URL("../app/page.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/SiteChrome.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/layout.tsx", import.meta.url), "utf8"),
     readFile(new URL("../package.json", import.meta.url), "utf8"),
   ]);
 
-  assert.match(page, /PEP LOGAR/);
+  assert.match(siteChrome, /PEP LOGAR/);
   assert.match(page, /id="capacidades"/);
   assert.match(page, /id="metodo"/);
   assert.match(page, /id="contacto"/);

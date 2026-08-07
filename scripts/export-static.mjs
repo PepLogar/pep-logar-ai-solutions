@@ -1,5 +1,5 @@
 import { cp, mkdir, readFile, rm, writeFile } from "node:fs/promises";
-import { resolve } from "node:path";
+import { dirname, resolve } from "node:path";
 import { pathToFileURL } from "node:url";
 
 const root = resolve(import.meta.dirname, "..");
@@ -7,6 +7,11 @@ const clientDirectory = resolve(root, "dist", "client");
 const serverEntry = resolve(root, "dist", "server", "index.js");
 const productionDirectory = resolve(root, "production");
 const siteUrl = "https://aisolutions.peplogar.com/";
+const routes = [
+  ["/", "index.html"],
+  ["/productos", "productos/index.html"],
+  ["/productos/frontend-product-editor-ai", "productos/frontend-product-editor-ai/index.html"],
+];
 
 await rm(productionDirectory, { recursive: true, force: true });
 await mkdir(productionDirectory, { recursive: true });
@@ -16,29 +21,34 @@ const workerUrl = pathToFileURL(serverEntry);
 workerUrl.searchParams.set("export", `${process.pid}-${Date.now()}`);
 const { default: worker } = await import(workerUrl.href);
 
-const response = await worker.fetch(
-  new Request(siteUrl, { headers: { accept: "text/html" } }),
-  {
-    ASSETS: {
-      async fetch(request) {
-        const pathname = new URL(request.url).pathname.replace(/^\/+/, "");
-        try {
-          const body = await readFile(resolve(clientDirectory, pathname));
-          return new Response(body);
-        } catch {
-          return new Response("Not found", { status: 404 });
-        }
-      },
+const env = {
+  ASSETS: {
+    async fetch(request) {
+      const pathname = new URL(request.url).pathname.replace(/^\/+/, "");
+      try {
+        const body = await readFile(resolve(clientDirectory, pathname));
+        return new Response(body);
+      } catch {
+        return new Response("Not found", { status: 404 });
+      }
     },
   },
-  { waitUntil() {}, passThroughOnException() {} },
-);
+};
 
-if (!response.ok) {
-  throw new Error(`Static export failed with HTTP ${response.status}`);
+for (const [pathname, outputPath] of routes) {
+  const response = await worker.fetch(
+    new Request(new URL(pathname, siteUrl), { headers: { accept: "text/html" } }),
+    env,
+    { waitUntil() {}, passThroughOnException() {} },
+  );
+
+  if (!response.ok) {
+    throw new Error(`Static export failed for ${pathname} with HTTP ${response.status}`);
+  }
+
+  const destination = resolve(productionDirectory, outputPath);
+  await mkdir(dirname(destination), { recursive: true });
+  await writeFile(destination, await response.text());
 }
-
-const html = await response.text();
-await writeFile(resolve(productionDirectory, "index.html"), html);
 
 console.log(`Production export written to ${productionDirectory}`);

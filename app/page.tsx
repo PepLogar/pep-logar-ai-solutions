@@ -1,4 +1,5 @@
 import { ContactForm } from "./ContactForm";
+import { SiteFooter, SiteHeader } from "./SiteChrome";
 
 const services = [
   {
@@ -31,21 +32,7 @@ const steps = [
 export default function Home() {
   return (
     <main>
-      <nav className="nav shell" aria-label="Navegación principal">
-        <a className="brand" href="#inicio" aria-label="Pep Logar AI Solutions, inicio">
-          <span className="brand-mark" aria-hidden="true"><i>P</i><i>L</i></span>
-          <span>PEP LOGAR</span>
-          <span className="brand-unit">/ AI SOLUTIONS</span>
-        </a>
-        <div className="nav-links">
-          <a href="#capacidades">Qué hacemos</a>
-          <a href="#metodo">Cómo trabajamos</a>
-          <a href="#contacto">Hablemos</a>
-        </div>
-        <a className="nav-cta" href="mailto:info@aisolutions.peplogar.com?subject=Quiero%20detectar%20un%20proceso%20automatizable">
-          Explorar un proceso <span aria-hidden="true">↗</span>
-        </a>
-      </nav>
+      <SiteHeader />
 
       <section className="hero shell" id="inicio">
         <div className="hero-copy">
@@ -114,6 +101,19 @@ export default function Home() {
             </article>
           ))}
         </div>
+      </section>
+
+      <section className="home-product shell" aria-labelledby="home-product-title">
+        <div className="home-product-copy">
+          <p className="eyebrow light"><span /> Producto propio</p>
+          <h2 id="home-product-title">Edita PrestaShop<br />desde el catálogo.</h2>
+          <p>Pep Logar Frontend Product Editor + AI elimina el salto constante entre la tienda pública y el Back-Office. Sin módulos, compatible con PrestaShop 1.6, 1.7, 8 y 9.</p>
+          <a className="button button-light" href="/productos/frontend-product-editor-ai">Ver el producto <span>↗</span></a>
+        </div>
+        <a className="home-product-visual" href="/productos/frontend-product-editor-ai" aria-label="Conocer Frontend Product Editor + AI">
+          <img src="/productos/fpe-ai/frontoffice-editor.png" alt="Editor de producto PrestaShop abierto desde el catálogo" />
+          <span>Chrome · Edge · IA configurable</span>
+        </a>
       </section>
 
       <section className="example shell">
@@ -186,19 +186,7 @@ export default function Home() {
         </div>
       </section>
 
-      <footer className="footer shell">
-        <div className="brand"><span className="brand-mark" aria-hidden="true"><i>P</i><i>L</i></span><span>PEP LOGAR</span><span className="brand-unit">/ AI SOLUTIONS</span></div>
-        <address className="footer-address">
-          <strong>Todo en Tinta Pep Logar S.L.</strong>
-          <span>CIF B86378981</span>
-          <span>Av. Europa, 232 · 28905 Getafe, Sector III · España</span>
-        </address>
-        <div className="footer-meta">
-          <a href="mailto:info@aisolutions.peplogar.com">info@aisolutions.peplogar.com</a>
-          <a href="tel:+34911419634">(+34) 91 141 96 34</a>
-          <p>© {new Date().getFullYear()} Pep Logar AI Solutions</p>
-        </div>
-      </footer>
+      <SiteFooter />
     </main>
   );
 }
