@@ -43,15 +43,17 @@ test("server-renders the Pep Logar AI Solutions concept", async () => {
 });
 
 test("server-renders the product catalog and product landing page", async () => {
-  const [catalogResponse, productResponse] = await Promise.all([
+  const [catalogResponse, productResponse, privacyResponse] = await Promise.all([
     render("/productos"),
     render("/productos/frontend-product-editor-ai"),
+    render("/privacidad/frontend-product-editor-ai"),
   ]);
 
   assert.equal(catalogResponse.status, 200);
   assert.equal(productResponse.status, 200);
+  assert.equal(privacyResponse.status, 200);
 
-  const [catalog, product] = await Promise.all([catalogResponse.text(), productResponse.text()]);
+  const [catalog, product, privacy] = await Promise.all([catalogResponse.text(), productResponse.text(), privacyResponse.text()]);
   assert.match(catalog, /Software que resuelve/);
   assert.match(catalog, /Frontend Product Editor \+ AI/);
   assert.match(catalog, /href="\/productos\/frontend-product-editor-ai"/);
@@ -63,6 +65,15 @@ test("server-renders the product catalog and product landing page", async () => 
   assert.match(product, /og-product\.png/);
   assert.match(product, /Solicitar acceso/);
   assert.match(product, /Preguntas frecuentes/);
+  assert.match(product, /6 idiomas/);
+  assert.match(product, /href="\/privacidad\/frontend-product-editor-ai"/);
+
+  assert.match(privacy, /Privacidad del producto/);
+  assert.match(privacy, /B86378981/);
+  assert.match(privacy, /proveedores remotos de IA deben utilizar HTTPS/i);
+  assert.match(privacy, /borrar todos los datos/i);
+  assert.match(privacy, /Compromiso de uso limitado/i);
+  assert.match(privacy, /no se utilizan para publicidad/i);
 });
 
 test("ships the final concept without starter artifacts", async () => {
@@ -81,4 +92,20 @@ test("ships the final concept without starter artifacts", async () => {
   assert.doesNotMatch(packageJson, /react-loading-skeleton/);
   await access(new URL("../public/og.png", import.meta.url));
   await assert.rejects(access(new URL("../app/_sites-preview/SkeletonPreview.tsx", import.meta.url)));
+});
+
+test("exports every public commercial route", async () => {
+  const publicFiles = [
+    "../production/index.html",
+    "../production/productos/index.html",
+    "../production/productos/frontend-product-editor-ai/index.html",
+    "../production/privacidad/frontend-product-editor-ai/index.html",
+  ];
+  const renderedPages = await Promise.all(publicFiles.map(file => readFile(new URL(file, import.meta.url), "utf8")));
+  assert.match(renderedPages[2], /Frontend Product Editor \+ AI/);
+  assert.match(renderedPages[3], /Privacidad del producto/);
+  renderedPages.forEach(html => assert.doesNotMatch(html, /https?:\/\/(?:localhost|127\.0\.0\.1)/i));
+  const productMedia = Array.from(renderedPages[2].matchAll(/(?:src|href)="(\/productos\/fpe-ai\/[^"?#]+)(?:[?#][^"]*)?"/g), match => match[1]);
+  assert.ok(productMedia.length >= 6);
+  await Promise.all(Array.from(new Set(productMedia)).map(mediaPath => access(new URL(`../public${mediaPath}`, import.meta.url))));
 });

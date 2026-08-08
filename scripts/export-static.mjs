@@ -11,6 +11,7 @@ const routes = [
   ["/", "index.html"],
   ["/productos", "productos/index.html"],
   ["/productos/frontend-product-editor-ai", "productos/frontend-product-editor-ai/index.html"],
+  ["/privacidad/frontend-product-editor-ai", "privacidad/frontend-product-editor-ai/index.html"],
 ];
 
 await rm(productionDirectory, { recursive: true, force: true });

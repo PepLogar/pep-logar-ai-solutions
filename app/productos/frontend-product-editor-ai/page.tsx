@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { SiteFooter, SiteHeader } from "../../SiteChrome";
 
 const benefits = [
@@ -12,7 +13,7 @@ const benefits = [
 
 const faqs = [
   ["¿Instala algún módulo o modifica PrestaShop?", "No. Es una extensión de Chrome y Edge. No copia archivos, no crea tablas y no añade overrides a la tienda."],
-  ["¿Qué versiones de PrestaShop admite?", "Dispone de adaptadores nativos para PrestaShop 1.6, 1.7, 8 y 9."],
+  ["¿Qué versiones de PrestaShop admite?", "Dispone de adaptadores para las familias PrestaShop 1.6, 1.7, 8 y 9. La matriz comprobada incluye 1.6.1.19, 1.7.8.11, 8.2.7 y 9.1.4; otras revisiones se validan en la tienda concreta."],
   ["¿Dónde se guarda la clave de IA?", "La clave y las preferencias permanecen en el almacenamiento local del perfil del navegador. Las peticiones se envían directamente al proveedor elegido."],
   ["¿Funciona desde cualquier ordenador?", "Solo desde el navegador y el perfil donde está instalada. Además, debe existir una sesión válida del Back-Office en ese mismo perfil."],
   ["¿Puedo editar productos con variantes?", "Sí. La extensión muestra el identificador de la combinación seleccionada. Tras cambiar talla, color u otro atributo, se actualiza la página para tomar la nueva combinación."],
@@ -51,7 +52,7 @@ export default function ProductPage() {
             <a className="text-link" href="#demostracion">Ver demostración <span>↓</span></a>
           </div>
           <div className="product-proof" aria-label="Ventajas principales">
-            <span>Sin módulos</span><span>Instalación limpia</span><span>IA configurable</span>
+            <span>Sin módulos</span><span>6 idiomas</span><span>IA configurable</span>
           </div>
         </div>
         <div className="product-hero-visual">
@@ -148,7 +149,7 @@ export default function ProductPage() {
           <div><h2 id="gallery-title">Cada función, en su contexto.</h2></div>
         </div>
         <div className="gallery-grid">
-          <figure className="gallery-wide"><img src="/productos/fpe-ai/editor-lateral.png" alt="Panel lateral de edición sobre el producto público" /><figcaption>Edición rápida desde el catálogo público</figcaption></figure>
+          <figure className="gallery-wide"><img src="/productos/fpe-ai/frontoffice-pill.png" alt="Píldora de edición disponible sobre el producto público" /><figcaption>Acceso inmediato desde el catálogo público</figcaption></figure>
           <figure><img src="/productos/fpe-ai/dictado.png" alt="Ventana de dictado por micrófono" /><figcaption>Dictado revisable y pulido opcional con IA</figcaption></figure>
           <figure><img src="/productos/fpe-ai/propuesta-html.png" alt="Vista previa de una propuesta HTML generada por IA" /><figcaption>Propuesta previa antes de insertar</figcaption></figure>
           <figure className="gallery-wide"><img src="/productos/fpe-ai/configuracion.png" alt="Configuración de una instalación PrestaShop" /><figcaption>Perfiles independientes para varias instalaciones</figcaption></figure>
@@ -163,10 +164,11 @@ export default function ProductPage() {
         </div>
         <dl>
           <div><dt>Navegador</dt><dd>Google Chrome o Microsoft Edge de escritorio</dd></div>
-          <div><dt>PrestaShop</dt><dd>1.6 · 1.7 · 8 · 9</dd></div>
+          <div><dt>PrestaShop</dt><dd>Adaptadores 1.6 · 1.7 · 8 · 9; matriz comprobada 1.6.1.19 · 1.7.8.11 · 8.2.7 · 9.1.4</dd></div>
           <div><dt>Sesión</dt><dd>Back-Office abierto en el mismo perfil del navegador</dd></div>
           <div><dt>Instalación</dt><dd>Extensión del navegador, sin módulo de PrestaShop</dd></div>
-          <div><dt>IA</dt><dd>Opcional: proveedor en la nube o modelo local compatible</dd></div>
+          <div><dt>IA</dt><dd>Opcional: proveedor HTTPS en la nube o modelo local compatible</dd></div>
+          <div><dt>Interfaz</dt><dd>Español, inglés, francés, italiano, alemán y portugués</dd></div>
         </dl>
       </section>
 
@@ -191,6 +193,8 @@ export default function ProductPage() {
           <a href="tel:+34911419634">(+34) 91 141 96 34</a>
         </div>
       </section>
+
+      <p className="product-privacy-link shell">Antes de instalar, consulta la <Link href="/privacidad/frontend-product-editor-ai">política de privacidad y tratamiento de datos</Link>.</p>
 
       <SiteFooter />
     </main>

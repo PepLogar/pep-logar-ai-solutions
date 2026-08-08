@@ -37,6 +37,7 @@ export function SiteFooter() {
       <div className="footer-meta">
         <a href="mailto:info@aisolutions.peplogar.com">info@aisolutions.peplogar.com</a>
         <a href="tel:+34911419634">(+34) 91 141 96 34</a>
+        <Link href="/privacidad/frontend-product-editor-ai">Privacidad de Frontend Product Editor + AI</Link>
         <p>© {new Date().getFullYear()} Pep Logar AI Solutions</p>
       </div>
     </footer>
