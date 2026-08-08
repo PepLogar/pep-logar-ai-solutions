@@ -4,6 +4,25 @@ type SiteHeaderProps = {
   current?: "products";
 };
 
+const navigation = [
+  ["/#capacidades", "Qué hacemos"],
+  ["/productos/", "Productos"],
+  ["/#metodo", "Cómo trabajamos"],
+  ["/#contacto", "Hablemos"],
+] as const;
+
+function NavigationLinks({ current, className }: SiteHeaderProps & { className: string }) {
+  return (
+    <div className={className}>
+      {navigation.map(([href, label]) => (
+        <a key={href} href={href} aria-current={label === "Productos" && current === "products" ? "page" : undefined}>
+          {label}
+        </a>
+      ))}
+    </div>
+  );
+}
+
 export function SiteHeader({ current }: SiteHeaderProps) {
   return (
     <nav className="nav shell" aria-label="Navegación principal">
@@ -12,15 +31,17 @@ export function SiteHeader({ current }: SiteHeaderProps) {
         <span>PEP LOGAR</span>
         <span className="brand-unit">/ AI SOLUTIONS</span>
       </a>
-      <div className="nav-links">
-        <a href="/#capacidades">Qué hacemos</a>
-        <a href="/productos/" aria-current={current === "products" ? "page" : undefined}>Productos</a>
-        <a href="/#metodo">Cómo trabajamos</a>
-        <a href="/#contacto">Hablemos</a>
-      </div>
+      <NavigationLinks className="nav-links" current={current} />
       <a className="nav-cta" href="mailto:info@aisolutions.peplogar.com?subject=Quiero%20conocer%20vuestras%20soluciones">
         Explorar una solución <span aria-hidden="true">↗</span>
       </a>
+      <details className="mobile-menu">
+        <summary>
+          <span className="mobile-menu-label">Menú</span>
+          <span className="mobile-menu-icon" aria-hidden="true"><i /><i /></span>
+        </summary>
+        <NavigationLinks className="mobile-menu-links" current={current} />
+      </details>
     </nav>
   );
 }

@@ -76,6 +76,26 @@ test("server-renders the product catalog and product landing page", async () => 
   assert.match(privacy, /no se utilizan para publicidad/i);
 });
 
+test("renders accessible desktop and mobile navigation on every public route", async () => {
+  const routes = [
+    "/",
+    "/productos",
+    "/productos/frontend-product-editor-ai",
+    "/privacidad/frontend-product-editor-ai",
+  ];
+  const destinations = ["/#capacidades", "/productos/", "/#metodo", "/#contacto"];
+  const pages = await Promise.all(routes.map(async route => (await render(route)).text()));
+
+  pages.forEach(html => {
+    assert.match(html, /<nav class="nav shell" aria-label="Navegación principal">/);
+    assert.match(html, /<details class="mobile-menu">/);
+    assert.match(html, /<summary>/);
+    destinations.forEach(destination => {
+      assert.ok(html.split(`href="${destination}"`).length >= 3, `missing desktop or mobile link to ${destination}`);
+    });
+  });
+});
+
 test("ships the final concept without starter artifacts", async () => {
   const [page, siteChrome, layout, packageJson] = await Promise.all([
     readFile(new URL("../app/page.tsx", import.meta.url), "utf8"),
