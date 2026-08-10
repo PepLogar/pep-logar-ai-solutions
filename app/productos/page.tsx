@@ -4,6 +4,7 @@ import { SiteFooter, SiteHeader } from "../SiteChrome";
 export const metadata: Metadata = {
   title: "Productos | Pep Logar AI Solutions",
   description: "Software propio de Pep Logar AI Solutions para resolver tareas reales con automatización e inteligencia artificial.",
+  alternates: { canonical: "/productos/" },
 };
 
 export default function ProductsPage() {

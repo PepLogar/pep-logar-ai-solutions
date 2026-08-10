@@ -1,5 +1,10 @@
+import type { Metadata } from "next";
 import { ContactForm } from "./ContactForm";
 import { SiteFooter, SiteHeader } from "./SiteChrome";
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
 
 const services = [
   {

@@ -27,6 +27,7 @@ const faqs = [
 export const metadata: Metadata = {
   title: "Frontend Product Editor + AI para PrestaShop | Pep Logar",
   description: "Edita el producto PrestaShop que ya estás viendo, sin volver a buscarlo en el Back-Office. Prueba completa de 14 días, modo gratuito y licencias perpetuas.",
+  alternates: { canonical: "/productos/frontend-product-editor-ai/" },
   openGraph: {
     title: "Pep Logar Frontend Product Editor + AI",
     description: "Edita el producto que ya estás viendo. Sin módulos, con prueba completa de 14 días.",
@@ -42,8 +43,34 @@ export const metadata: Metadata = {
 };
 
 export default function ProductPage() {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    name: "Pep Logar Frontend Product Editor + AI for PrestaShop",
+    applicationCategory: "BusinessApplication",
+    operatingSystem: "Google Chrome, Microsoft Edge",
+    description: "Extensión para editar productos PrestaShop desde su ficha pública utilizando la sesión autenticada del Back-Office, sin instalar módulos.",
+    url: "https://aisolutions.peplogar.com/productos/frontend-product-editor-ai/",
+    image: "https://aisolutions.peplogar.com/productos/fpe-ai/og-product.png",
+    softwareVersion: "1.27.0",
+    inLanguage: ["es", "en", "fr", "it", "de", "pt"],
+    offers: {
+      "@type": "AggregateOffer",
+      priceCurrency: "EUR",
+      lowPrice: "89",
+      highPrice: "179",
+      offerCount: "2",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "Pep Logar AI Solutions",
+      url: "https://aisolutions.peplogar.com/",
+    },
+  };
+
   return (
     <main className="product-page">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
       <SiteHeader current="products" />
 
       <section className="product-hero shell">
@@ -66,6 +93,18 @@ export default function ProductPage() {
           <div className="product-version-card"><small>COMPATIBILIDAD</small><strong>PS 1.6 · 1.7 · 8 · 9</strong></div>
         </div>
       </section>
+
+      <nav className="product-section-nav" aria-label="Accesos rápidos del producto">
+        <div className="shell">
+          <a href="#demostracion">Demostración</a>
+          <a href="#prueba">Prueba</a>
+          <a href="#planes">Planes</a>
+          <a href="#funciones">Funciones</a>
+          <a href="#recorrido">Guía visual</a>
+          <a href="#compatibilidad">Compatibilidad</a>
+          <a href="#preguntas">Preguntas</a>
+        </div>
+      </nav>
 
       <section className="product-use-case">
         <div className="shell product-use-case-grid">
@@ -210,7 +249,7 @@ export default function ProductPage() {
         </div>
       </section>
 
-      <section className="product-benefits shell">
+      <section className="product-benefits shell" id="funciones">
         <div className="product-section-heading">
           <p className="section-label">Lo que cambia</p>
           <div><h2>Menos búsquedas.<br />Más catálogo resuelto.</h2><p>La extensión acompaña el flujo de trabajo en lugar de obligarte a abandonar el producto que estás revisando.</p></div>
@@ -268,7 +307,7 @@ export default function ProductPage() {
         </div>
       </section>
 
-      <section className="product-gallery shell" aria-labelledby="gallery-title">
+      <section className="product-gallery shell" id="recorrido" aria-labelledby="gallery-title">
         <div className="product-section-heading">
           <p className="section-label">Recorrido visual</p>
           <div><h2 id="gallery-title">Cada función, en su contexto.</h2><p>Consulta el recorrido completo con todos los menús, opciones y pasos como si estuvieras delante del ordenador.</p></div>
@@ -290,7 +329,7 @@ export default function ProductPage() {
         </div>
       </section>
 
-      <section className="product-requirements shell">
+      <section className="product-requirements shell" id="compatibilidad">
         <div className="requirements-copy">
           <p className="section-label">Compatibilidad</p>
           <h2>Lo necesario para empezar.</h2>
@@ -316,7 +355,7 @@ export default function ProductPage() {
         <span>Compra gestionada por Lemon Squeezy</span>
       </section>
 
-      <section className="product-faq shell">
+      <section className="product-faq shell" id="preguntas">
         <div className="product-section-heading">
           <p className="section-label">Preguntas frecuentes</p>
           <div><h2>Lo importante, antes de instalar.</h2></div>

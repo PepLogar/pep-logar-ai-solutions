@@ -5,6 +5,7 @@ import { SiteFooter, SiteHeader } from "../../SiteChrome";
 export const metadata: Metadata = {
   title: "Privacidad de Frontend Product Editor + AI | Pep Logar",
   description: "Política de privacidad y tratamiento de datos de la extensión Pep Logar Frontend Product Editor + AI.",
+  alternates: { canonical: "/privacidad/frontend-product-editor-ai/" },
 };
 
 export default function ExtensionPrivacyPage() {
