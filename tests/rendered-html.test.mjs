@@ -66,7 +66,7 @@ test("server-renders the product catalog and product landing page", async () => 
   assert.match(product, /Solicitar acceso/);
   assert.match(product, /Preguntas frecuentes/);
   assert.match(product, /6 idiomas/);
-  assert.match(product, /href="\/privacidad\/frontend-product-editor-ai"/);
+  assert.match(product, /href="https:\/\/aisolutions\.peplogar\.com\/privacidad\/frontend-product-editor-ai\/"/);
 
   assert.match(privacy, /Privacidad del producto/);
   assert.match(privacy, /B86378981/);

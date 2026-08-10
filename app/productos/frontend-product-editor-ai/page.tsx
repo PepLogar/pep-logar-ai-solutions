@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { SiteFooter, SiteHeader } from "../../SiteChrome";
 
 const benefits = [
@@ -194,7 +193,7 @@ export default function ProductPage() {
         </div>
       </section>
 
-      <p className="product-privacy-link shell">Antes de instalar, consulta la <Link href="/privacidad/frontend-product-editor-ai">política de privacidad y tratamiento de datos</Link>.</p>
+      <p className="product-privacy-link shell">Antes de instalar, consulta la <a href="https://aisolutions.peplogar.com/privacidad/frontend-product-editor-ai/">política de privacidad y tratamiento de datos</a>.</p>
 
       <SiteFooter />
     </main>
