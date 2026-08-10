@@ -11,6 +11,11 @@ const benefits = [
 ];
 
 const faqs = [
+  ["¿Cuándo empieza la prueba de 14 días?", "La prueba empieza después de la primera conexión correcta con PrestaShop, no al instalar la extensión. Durante esos 14 días están disponibles todas las funciones."],
+  ["¿Qué queda disponible cuando termina la prueba?", "El modo gratuito permanente sigue identificando el producto o la combinación y abre su ficha exacta del Back-Office. La edición desde el Front-Office, la verificación, el historial, la IA, el dictado y los prompts requieren licencia."],
+  ["¿La licencia es una suscripción?", "No. Tienda y Pro son licencias perpetuas de pago único. No hay cuotas mensuales ni renovaciones obligatorias."],
+  ["¿Qué diferencia hay entre Tienda y Pro?", "Tienda permite gestionar una tienda PrestaShop y hasta seis perfiles de navegador. Pro permite entre dos y cinco tiendas y hasta veinte perfiles."],
+  ["¿Qué es una activación de navegador?", "Cada perfil de Chrome o Edge donde activas la licencia cuenta como una activación. Puedes liberarla desde la propia extensión antes de cambiar de equipo o perfil."],
   ["¿Instala algún módulo o modifica PrestaShop?", "No. Es una extensión de Chrome y Edge. No copia archivos, no crea tablas y no añade overrides a la tienda."],
   ["¿Qué versiones de PrestaShop admite?", "Dispone de adaptadores para las familias PrestaShop 1.6, 1.7, 8 y 9. La matriz comprobada incluye 1.6.1.19, 1.7.8.11, 8.2.7 y 9.1.4; otras revisiones se validan en la tienda concreta."],
   ["¿Dónde se guarda la clave de IA?", "La clave y las preferencias permanecen en el almacenamiento local del perfil del navegador. Las peticiones se envían directamente al proveedor elegido."],
@@ -21,17 +26,17 @@ const faqs = [
 
 export const metadata: Metadata = {
   title: "Frontend Product Editor + AI para PrestaShop | Pep Logar",
-  description: "Edita productos PrestaShop desde el Front Office, mejora contenidos con IA y evita saltar constantemente al Back-Office. Sin módulos ni cambios en la tienda.",
+  description: "Edita el producto PrestaShop que ya estás viendo, sin volver a buscarlo en el Back-Office. Prueba completa de 14 días, modo gratuito y licencias perpetuas.",
   openGraph: {
     title: "Pep Logar Frontend Product Editor + AI",
-    description: "Edita PrestaShop desde el catálogo. Sin módulos.",
+    description: "Edita el producto que ya estás viendo. Sin módulos, con prueba completa de 14 días.",
     type: "website",
     images: [{ url: "/productos/fpe-ai/og-product.png", width: 1732, height: 908, alt: "Pep Logar Frontend Product Editor + AI" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Pep Logar Frontend Product Editor + AI",
-    description: "Gestiona tu catálogo mientras lo estás viendo.",
+    description: "Edita el producto que ya estás viendo y evita volver a buscarlo en el Back-Office.",
     images: ["/productos/fpe-ai/og-product.png"],
   },
 };
@@ -44,14 +49,14 @@ export default function ProductPage() {
       <section className="product-hero shell">
         <div className="product-hero-copy">
           <p className="eyebrow"><span /> Producto · Chrome / Edge · PrestaShop 1.6–9</p>
-          <h1>Gestiona tu catálogo<br /><em>mientras lo estás viendo.</em></h1>
-          <p className="product-hero-lede">Edita productos desde el Front Office, mejora contenidos con IA y evita saltar constantemente entre la tienda y el Back-Office.</p>
+          <h1>Corrige el producto<br /><em>que ya estás viendo.</em></h1>
+          <p className="product-hero-lede">Edita precios, stock, referencias y contenidos desde la ficha pública de tu tienda PrestaShop, sin volver a localizar el producto en el Back-Office.</p>
           <div className="hero-actions">
-            <a className="button button-dark" href="mailto:info@aisolutions.peplogar.com?subject=Solicitar%20acceso%20a%20Frontend%20Product%20Editor%20%2B%20AI">Solicitar acceso <span>↗</span></a>
+            <a className="button button-dark" href="#prueba">Probar gratis 14 días <span>↓</span></a>
             <a className="text-link" href="#demostracion">Ver demostración <span>↓</span></a>
           </div>
           <div className="product-proof" aria-label="Ventajas principales">
-            <span>Sin módulos</span><span>6 idiomas</span><span>IA configurable</span>
+            <span>Sin tarjeta para probar</span><span>Modo gratuito permanente</span><span>Pago único</span><span>Sin módulos</span>
           </div>
         </div>
         <div className="product-hero-visual">
@@ -80,6 +85,81 @@ export default function ProductPage() {
               Tu navegador no permite reproducir este vídeo.
             </video>
             <span className="video-caption">Demostración · 46 segundos · PrestaShop 9</span>
+          </div>
+        </div>
+      </section>
+
+      <section className="product-trial shell" id="prueba">
+        <div className="product-section-heading">
+          <p className="section-label">Empieza sin riesgo</p>
+          <div>
+            <h2>Prueba todo.<br />Decide después.</h2>
+            <p>La prueba no empieza al instalar. Empieza cuando la extensión conecta correctamente con tu primera tienda PrestaShop.</p>
+          </div>
+        </div>
+        <div className="trial-grid">
+          <article>
+            <span>01</span>
+            <strong>14 días completos</strong>
+            <p>Edita, revisa, verifica, deshaz, dicta y utiliza la IA con todas las funciones activas.</p>
+          </article>
+          <article>
+            <span>02</span>
+            <strong>Sin tarjeta para probar</strong>
+            <p>Instala la extensión, conecta tu tienda y comprueba el flujo real antes de comprar.</p>
+          </article>
+          <article>
+            <span>03</span>
+            <strong>Modo gratuito permanente</strong>
+            <p>Cuando termina la prueba, sigue identificando productos y abriendo su ficha exacta del Back-Office.</p>
+          </article>
+        </div>
+      </section>
+
+      <section className="product-pricing" id="planes">
+        <div className="shell">
+          <div className="product-section-heading light-heading">
+            <p className="section-label">Licencias perpetuas</p>
+            <div>
+              <h2>Un pago.<br />Tu herramienta.</h2>
+              <p>Elige según el número de tiendas y perfiles de navegador. Ambas licencias incluyen todas las funciones comerciales.</p>
+            </div>
+          </div>
+          <div className="pricing-grid">
+            <article className="pricing-card pricing-card-featured">
+              <div className="pricing-card-heading">
+                <div><span className="pricing-badge">Recomendado</span><h3>Tienda</h3></div>
+                <p><strong>89 €</strong><small>pago único · impuestos aplicables aparte</small></p>
+              </div>
+              <p className="pricing-audience">Para el propietario o equipo administrativo de una tienda PrestaShop.</p>
+              <ul>
+                <li>Una tienda PrestaShop</li>
+                <li>Hasta 6 perfiles de Chrome o Edge</li>
+                <li>Todas las funciones comerciales</li>
+                <li>Licencia perpetua, sin cuotas mensuales</li>
+              </ul>
+              <a className="button button-light" href="#disponibilidad">Elegir Tienda <span>↓</span></a>
+            </article>
+            <article className="pricing-card">
+              <div className="pricing-card-heading">
+                <div><span className="pricing-badge pricing-badge-secondary">Multitienda</span><h3>Pro</h3></div>
+                <p><strong>179 €</strong><small>pago único · impuestos aplicables aparte</small></p>
+              </div>
+              <p className="pricing-audience">Para negocios que gestionan varias tiendas o pequeños equipos multitienda.</p>
+              <ul>
+                <li>Entre 2 y 5 tiendas PrestaShop</li>
+                <li>Hasta 20 perfiles de Chrome o Edge</li>
+                <li>Todas las funciones comerciales</li>
+                <li>Licencia perpetua, sin cuotas mensuales</li>
+              </ul>
+              <a className="button button-outline-light" href="#disponibilidad">Elegir Pro <span>↓</span></a>
+            </article>
+          </div>
+          <div className="license-flow" aria-label="Proceso de compra y activación">
+            <span><b>1</b> Instala desde Chrome Web Store</span>
+            <span><b>2</b> Prueba 14 días</span>
+            <span><b>3</b> Compra en Lemon Squeezy</span>
+            <span><b>4</b> Activa tu clave</span>
           </div>
         </div>
       </section>
@@ -171,6 +251,16 @@ export default function ProductPage() {
         </dl>
       </section>
 
+      <section className="product-trust shell" aria-label="Garantías comerciales y técnicas">
+        <span>Pago único</span>
+        <span>Sin suscripción</span>
+        <span>Chrome y Edge</span>
+        <span>PrestaShop 1.6–9</span>
+        <span>6 idiomas</span>
+        <span>Datos locales</span>
+        <span>Compra gestionada por Lemon Squeezy</span>
+      </section>
+
       <section className="product-faq shell">
         <div className="product-section-heading">
           <p className="section-label">Preguntas frecuentes</p>
@@ -181,15 +271,15 @@ export default function ProductPage() {
         </div>
       </section>
 
-      <section className="product-cta shell">
+      <section className="product-cta shell" id="disponibilidad">
         <div>
-          <p className="eyebrow light"><span /> Solicitar acceso</p>
-          <h2>La próxima ficha que abras<br />puede editarse desde ahí.</h2>
-          <p>Cuéntanos qué versión de PrestaShop utilizas y te ayudaremos a validar el encaje en tu tienda.</p>
+          <p className="eyebrow light"><span /> Próximo lanzamiento</p>
+          <h2>Instala, conecta<br />y decide después de probar.</h2>
+          <p>La extensión se publicará en Chrome Web Store. Desde allí podrás iniciar la prueba completa de 14 días y, si te encaja, adquirir una licencia perpetua mediante Lemon Squeezy.</p>
         </div>
         <div className="product-cta-actions">
-          <a className="button button-light" href="mailto:info@aisolutions.peplogar.com?subject=Solicitar%20acceso%20a%20Frontend%20Product%20Editor%20%2B%20AI">Solicitar acceso <span>↗</span></a>
-          <a href="tel:+34911419634">(+34) 91 141 96 34</a>
+          <a className="button button-light" href="#planes">Comparar planes <span>↑</span></a>
+          <span className="availability-status">Enlace de instalación disponible tras la publicación</span>
         </div>
       </section>
 

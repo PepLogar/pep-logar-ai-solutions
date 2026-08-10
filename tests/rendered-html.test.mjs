@@ -58,12 +58,21 @@ test("server-renders the product catalog and product landing page", async () => 
   assert.match(catalog, /Frontend Product Editor \+ AI/);
   assert.match(catalog, /href="\/productos\/frontend-product-editor-ai"/);
 
-  assert.match(product, /Gestiona tu catálogo/);
+  assert.match(product, /Corrige el producto/);
   assert.match(product, /PrestaShop 1\.6/);
   assert.match(product, /Sin módulos/);
   assert.match(product, /demo-fpe-ai\.mp4/);
   assert.match(product, /og-product\.png/);
-  assert.match(product, /Solicitar acceso/);
+  assert.match(product, /Probar gratis 14 días/);
+  assert.match(product, /Modo gratuito permanente/);
+  assert.match(product, /Tienda/);
+  assert.match(product, /89 €/);
+  assert.match(product, /Pro/);
+  assert.match(product, /179 €/);
+  assert.match(product, /Hasta 6 perfiles/);
+  assert.match(product, /Hasta 20 perfiles/);
+  assert.match(product, /Licencia perpetua/);
+  assert.doesNotMatch(product, /Solicitar%20acceso/i);
   assert.match(product, /Preguntas frecuentes/);
   assert.match(product, /6 idiomas/);
   assert.match(product, /href="https:\/\/aisolutions\.peplogar\.com\/privacidad\/frontend-product-editor-ai\/"/);
