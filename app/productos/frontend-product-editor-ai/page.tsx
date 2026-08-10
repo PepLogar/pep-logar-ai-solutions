@@ -66,6 +66,28 @@ export default function ProductPage() {
         </div>
       </section>
 
+      <section className="product-use-case">
+        <div className="shell product-use-case-grid">
+          <div className="product-use-case-lead">
+            <p className="section-label">Una situación real</p>
+            <span className="use-case-icon" aria-hidden="true">☎</span>
+            <h2>«¿Puedo comprarlo si no tiene stock?»</h2>
+            <p>Suena el teléfono. Un cliente quiere completar un pedido, pero la ficha pública indica que no queda stock. Tú sabes que sí lo tienes: lo que falta es actualizar el producto.</p>
+          </div>
+          <div className="product-use-case-story">
+            <article>
+              <span>Sin la extensión</span>
+              <p>Abres el Back-Office, buscas el producto en el catálogo, localizas sus cantidades, corriges el stock, guardas y vuelves a la tienda para comprobarlo. Mientras tanto, el cliente espera.</p>
+            </article>
+            <article className="product-use-case-fast">
+              <span>Con la extensión</span>
+              <p>Sigues en la misma ficha que está viendo el cliente. Corriges la cantidad en el panel, revisas y guardas. La tienda se actualiza sin tener que volver a localizar el producto.</p>
+            </article>
+            <strong>«Ya puede completar el pedido. Disculpe las molestias.»</strong>
+          </div>
+        </div>
+      </section>
+
       <section className="product-demo" id="demostracion">
         <div className="shell">
           <div className="product-section-heading">
@@ -114,26 +136,6 @@ export default function ProductPage() {
             <p>Cuando termina la prueba, sigue identificando productos y abriendo su ficha exacta del Back-Office.</p>
           </article>
         </div>
-        <div className="access-comparison" aria-label="Comparación entre el modo gratuito y la licencia comercial">
-          <article>
-            <p className="access-comparison-label">Gratis para siempre</p>
-            <h3>Localiza y abre la ficha correcta</h3>
-            <ul>
-              <li>Identifica el producto o la combinación que estás viendo</li>
-              <li>Abre su ficha exacta en el Back-Office con un clic</li>
-              <li>No requiere tarjeta ni compra posterior</li>
-            </ul>
-          </article>
-          <article className="access-comparison-paid">
-            <p className="access-comparison-label">Con licencia</p>
-            <h3>Edita sin salir de la tienda</h3>
-            <ul>
-              <li>Edita, revisa y verifica el guardado desde la ficha pública</li>
-              <li>Utiliza historial, deshacer, IA, prompts y dictado</li>
-              <li>Activa hasta 6 o 20 perfiles según el plan</li>
-            </ul>
-          </article>
-        </div>
       </section>
 
       <section className="product-pricing" id="planes">
@@ -175,13 +177,35 @@ export default function ProductPage() {
               <a className="button button-outline-light" href="#disponibilidad">Elegir Pro <span>↓</span></a>
             </article>
           </div>
+          <div className="plan-comparison-heading">
+            <p className="section-label">Comparación completa</p>
+            <h3>Qué conserva el modo gratuito y qué desbloquea cada licencia.</h3>
+          </div>
+          <div className="plan-comparison-wrap" aria-label="Tabla desplazable de comparación de planes">
+            <table className="plan-comparison">
+              <thead>
+                <tr><th scope="col">Función</th><th scope="col">Gratis</th><th scope="col">Tienda · 89 €</th><th scope="col">Pro · 179 €</th></tr>
+              </thead>
+              <tbody>
+                <tr><th scope="row">Identificar el producto y abrir su ficha exacta del Back-Office</th><td><span className="comparison-yes">✓</span></td><td><span className="comparison-yes">✓</span></td><td><span className="comparison-yes">✓</span></td></tr>
+                <tr><th scope="row">Edición desde la ficha pública</th><td>—</td><td><span className="comparison-yes">✓</span></td><td><span className="comparison-yes">✓</span></td></tr>
+                <tr><th scope="row">Revisión y verificación del guardado</th><td>—</td><td><span className="comparison-yes">✓</span></td><td><span className="comparison-yes">✓</span></td></tr>
+                <tr><th scope="row">Historial y deshacer cambios</th><td>—</td><td><span className="comparison-yes">✓</span></td><td><span className="comparison-yes">✓</span></td></tr>
+                <tr><th scope="row">Asistente de IA con tu propia clave</th><td>—</td><td><span className="comparison-yes">✓</span></td><td><span className="comparison-yes">✓</span></td></tr>
+                <tr><th scope="row">Dictado por voz con revisión</th><td>—</td><td><span className="comparison-yes">✓</span></td><td><span className="comparison-yes">✓</span></td></tr>
+                <tr><th scope="row">Tiendas PrestaShop cubiertas por la licencia</th><td>—</td><td>1</td><td>De 2 a 5</td></tr>
+                <tr><th scope="row">Perfiles de Chrome o Edge</th><td>Perfil donde está instalada</td><td>Hasta 6</td><td>Hasta 20</td></tr>
+                <tr><th scope="row">Duración de la licencia</th><td>No necesaria</td><td>Perpetua</td><td>Perpetua</td></tr>
+              </tbody>
+            </table>
+          </div>
           <div className="license-flow" aria-label="Proceso de compra y activación">
             <span><b>1</b> Instala desde Chrome Web Store</span>
             <span><b>2</b> Prueba 14 días</span>
             <span><b>3</b> Compra en Lemon Squeezy</span>
             <span><b>4</b> Activa tu clave</span>
           </div>
-          <p className="commercial-proof">Compatibilidad comprobada en Chrome con PrestaShop 9.1.4 y en Microsoft Edge con PrestaShop 8.2.7.</p>
+          <p className="commercial-proof">Compatibilidad probada con PrestaShop 1.6, 1.7, 8 y 9 en Google Chrome y Microsoft Edge.</p>
         </div>
       </section>
 
