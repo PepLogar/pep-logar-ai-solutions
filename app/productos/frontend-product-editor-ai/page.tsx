@@ -53,8 +53,8 @@ export default function ProductPage() {
           <p className="product-hero-lede">Edita precios, stock, referencias y contenidos desde la ficha pública de tu tienda PrestaShop, sin volver a localizar el producto en el Back-Office.</p>
           <div className="hero-actions">
             <a className="button button-dark" href="#prueba">Probar gratis 14 días <span>↓</span></a>
-            <a className="text-link" href="#demostracion">Ver demostración <span>↓</span></a>
             <a className="text-link" href="/productos/fpe-ai/Pep-Logar-FPE-AI-Guia-visual.pdf" download>Descargar guía PDF <span>↓</span></a>
+            <a className="text-link" href="#demostracion">Ver demostración <span>↓</span></a>
           </div>
           <div className="product-proof" aria-label="Ventajas principales">
             <span>Sin tarjeta para probar</span><span>Modo gratuito permanente</span><span>Pago único</span><span>Sin módulos</span>
