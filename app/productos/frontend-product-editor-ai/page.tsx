@@ -270,7 +270,16 @@ export default function ProductPage() {
       <section className="product-gallery shell" aria-labelledby="gallery-title">
         <div className="product-section-heading">
           <p className="section-label">Recorrido visual</p>
-          <div><h2 id="gallery-title">Cada función, en su contexto.</h2></div>
+          <div><h2 id="gallery-title">Cada función, en su contexto.</h2><p>Consulta el recorrido completo con todos los menús, opciones y pasos como si estuvieras delante del ordenador.</p></div>
+        </div>
+        <div className="product-guide-download">
+          <div>
+            <strong>Guía visual completa</strong>
+            <span>18 pantallas · Flujo de edición, licencias, IA, dictado y prompts</span>
+          </div>
+          <a className="button button-dark" href="/productos/fpe-ai/Pep-Logar-FPE-AI-Guia-visual.pdf" download>
+            Descargar PDF <span>↓</span>
+          </a>
         </div>
         <div className="gallery-grid">
           <figure className="gallery-wide"><img src="/productos/fpe-ai/frontoffice-pill.png" alt="Píldora de edición disponible sobre el producto público" /><figcaption>Acceso inmediato desde el catálogo público</figcaption></figure>
