@@ -1,4 +1,4 @@
-/* eslint-disable @next/next/no-html-link-for-pages -- Native navigation preserves hash links in the static Plesk export. */
+/* eslint-disable @next/next/no-html-link-for-pages, @next/next/no-img-element -- Native links preserve static Plesk navigation and the shared raster mark matches the extension identity. */
 
 type SiteHeaderProps = {
   current?: "products";
@@ -27,7 +27,7 @@ export function SiteHeader({ current }: SiteHeaderProps) {
   return (
     <nav className="nav shell" aria-label="Navegación principal">
       <a className="brand" href="/#inicio" aria-label="Pep Logar AI Solutions, inicio">
-        <span className="brand-mark" aria-hidden="true"><i>P</i><i>L</i></span>
+        <span className="brand-mark" aria-hidden="true"><img src="/pep-logar-logo.png" alt="" /></span>
         <span>PEP LOGAR</span>
         <span className="brand-unit">/ AI SOLUTIONS</span>
       </a>
@@ -49,7 +49,7 @@ export function SiteHeader({ current }: SiteHeaderProps) {
 export function SiteFooter() {
   return (
     <footer className="footer shell">
-      <div className="brand"><span className="brand-mark" aria-hidden="true"><i>P</i><i>L</i></span><span>PEP LOGAR</span><span className="brand-unit">/ AI SOLUTIONS</span></div>
+      <div className="brand"><span className="brand-mark" aria-hidden="true"><img src="/pep-logar-logo.png" alt="" /></span><span>PEP LOGAR</span><span className="brand-unit">/ AI SOLUTIONS</span></div>
       <address className="footer-address">
         <strong>Todo en Tinta Pep Logar S.L.</strong>
         <span>CIF B86378981</span>
