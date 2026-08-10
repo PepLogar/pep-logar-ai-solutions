@@ -54,6 +54,7 @@ export default function ProductPage() {
           <div className="hero-actions">
             <a className="button button-dark" href="#prueba">Probar gratis 14 días <span>↓</span></a>
             <a className="text-link" href="#demostracion">Ver demostración <span>↓</span></a>
+            <a className="text-link" href="/productos/fpe-ai/Pep-Logar-FPE-AI-Guia-visual.pdf" download>Descargar guía PDF <span>↓</span></a>
           </div>
           <div className="product-proof" aria-label="Ventajas principales">
             <span>Sin tarjeta para probar</span><span>Modo gratuito permanente</span><span>Pago único</span><span>Sin módulos</span>
