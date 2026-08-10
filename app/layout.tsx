@@ -9,6 +9,10 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://aisolutions.peplogar.com"),
   title: "Pep Logar AI Solutions | Software e IA que hacen avanzar el trabajo",
   description: "Diseñamos agentes, conexiones MCP y software potenciado con IA para automatizar procesos de empresa de forma útil, progresiva y controlable.",
+  icons: {
+    icon: "/pep-logar-logo.png",
+    apple: "/pep-logar-logo.png",
+  },
   openGraph: {
     title: "Menos tareas. Más empresa.",
     description: "Software y agentes de IA que conectan tus herramientas y hacen avanzar el trabajo.",
