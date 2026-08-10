@@ -114,6 +114,26 @@ export default function ProductPage() {
             <p>Cuando termina la prueba, sigue identificando productos y abriendo su ficha exacta del Back-Office.</p>
           </article>
         </div>
+        <div className="access-comparison" aria-label="Comparación entre el modo gratuito y la licencia comercial">
+          <article>
+            <p className="access-comparison-label">Gratis para siempre</p>
+            <h3>Localiza y abre la ficha correcta</h3>
+            <ul>
+              <li>Identifica el producto o la combinación que estás viendo</li>
+              <li>Abre su ficha exacta en el Back-Office con un clic</li>
+              <li>No requiere tarjeta ni compra posterior</li>
+            </ul>
+          </article>
+          <article className="access-comparison-paid">
+            <p className="access-comparison-label">Con licencia</p>
+            <h3>Edita sin salir de la tienda</h3>
+            <ul>
+              <li>Edita, revisa y verifica el guardado desde la ficha pública</li>
+              <li>Utiliza historial, deshacer, IA, prompts y dictado</li>
+              <li>Activa hasta 6 o 20 perfiles según el plan</li>
+            </ul>
+          </article>
+        </div>
       </section>
 
       <section className="product-pricing" id="planes">
@@ -161,6 +181,7 @@ export default function ProductPage() {
             <span><b>3</b> Compra en Lemon Squeezy</span>
             <span><b>4</b> Activa tu clave</span>
           </div>
+          <p className="commercial-proof">Compatibilidad comprobada en Chrome con PrestaShop 9.1.4 y en Microsoft Edge con PrestaShop 8.2.7.</p>
         </div>
       </section>
 

@@ -65,6 +65,8 @@ test("server-renders the product catalog and product landing page", async () => 
   assert.match(product, /og-product\.png/);
   assert.match(product, /Probar gratis 14 días/);
   assert.match(product, /Modo gratuito permanente/);
+  assert.match(product, /Gratis para siempre/);
+  assert.match(product, /Edita sin salir de la tienda/);
   assert.match(product, /Tienda/);
   assert.match(product, /89 €/);
   assert.match(product, /Pro/);
@@ -72,6 +74,7 @@ test("server-renders the product catalog and product landing page", async () => 
   assert.match(product, /Hasta 6 perfiles/);
   assert.match(product, /Hasta 20 perfiles/);
   assert.match(product, /Licencia perpetua/);
+  assert.match(product, /Chrome con PrestaShop 9\.1\.4/);
   assert.doesNotMatch(product, /Solicitar%20acceso/i);
   assert.match(product, /Preguntas frecuentes/);
   assert.match(product, /6 idiomas/);
