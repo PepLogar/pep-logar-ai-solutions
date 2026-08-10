@@ -74,6 +74,12 @@ test("server-renders the product catalog and product landing page", async () => 
   assert.match(privacy, /borrar todos los datos/i);
   assert.match(privacy, /Compromiso de uso limitado/i);
   assert.match(privacy, /no se utilizan para publicidad/i);
+  assert.match(privacy, /prueba completa de 14 días/i);
+  assert.match(privacy, /UUID aleatorio del perfil/i);
+  assert.match(privacy, /Cloudflare/i);
+  assert.match(privacy, /Lemon Squeezy/i);
+  assert.match(privacy, /no solicita, recibe ni almacena datos de tarjeta/i);
+  assert.match(privacy, /Google no procesa el pago ni es el vendedor/i);
 });
 
 test("renders accessible desktop and mobile navigation on every public route", async () => {
