@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ProductLanguageSwitcher, productLocalePaths } from "../../ProductLanguageSwitcher";
 import { SiteFooter, SiteHeader } from "../../SiteChrome";
 
 const benefits = [
@@ -29,7 +30,10 @@ const faqs = [
 export const metadata: Metadata = {
   title: "Frontend Product Editor + AI para PrestaShop | Pep Logar",
   description: "Edita el producto PrestaShop que ya estás viendo, sin volver a buscarlo en el Back-Office. Prueba completa de 14 días, modo gratuito y licencias perpetuas.",
-  alternates: { canonical: "/productos/frontend-product-editor-ai/" },
+  alternates: {
+    canonical: "/productos/frontend-product-editor-ai/",
+    languages: { es: productLocalePaths.es, en: productLocalePaths.en, "pt-PT": productLocalePaths.pt, fr: productLocalePaths.fr, it: productLocalePaths.it, de: productLocalePaths.de },
+  },
   openGraph: {
     title: "Pep Logar Frontend Product Editor + AI",
     description: "Edita el producto que ya estás viendo. Sin módulos, con prueba completa de 14 días.",
@@ -77,6 +81,7 @@ export default function ProductPage() {
 
       <section className="product-hero shell">
         <div className="product-hero-copy">
+          <ProductLanguageSwitcher current="es" />
           <p className="eyebrow"><span /> Producto · Chrome / Edge · PrestaShop 1.6–9</p>
           <h1><span className="product-brand">Pep Logar</span>Frontend Product<br /><em>Editor + AI</em></h1>
           <p className="product-hero-promise">Corrige el producto que ya estás viendo.</p>

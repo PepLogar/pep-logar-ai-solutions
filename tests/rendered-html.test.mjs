@@ -128,6 +128,28 @@ test("renders accessible desktop and mobile navigation on every public route", a
   });
 });
 
+test("server-renders every localized product page with its own copy, video and hreflang links", async () => {
+  const routes = [
+    ["/en/products/frontend-product-editor-ai", "Fix the product", "demo-en.mp4", "lang=\"en\""],
+    ["/pt/produtos/frontend-product-editor-ai", "Corrija o produto", "demo-pt.mp4", "lang=\"pt-PT\""],
+    ["/fr/produits/frontend-product-editor-ai", "Corrigez le produit", "demo-fr.mp4", "lang=\"fr\""],
+    ["/it/prodotti/frontend-product-editor-ai", "Correggi il prodotto", "demo-it.mp4", "lang=\"it\""],
+    ["/de/produkte/frontend-product-editor-ai", "Korrigieren Sie das Produkt", "demo-de.mp4", "lang=\"de\""],
+  ];
+  for (const [pathname, promise, video, language] of routes) {
+    const response = await render(pathname);
+    assert.equal(response.status, 200);
+    const html = await response.text();
+    assert.match(html, new RegExp(promise));
+    assert.match(html, new RegExp(video.replace(".", "\\.")));
+    assert.match(html, new RegExp(language));
+    assert.match(html, /rel="alternate" hrefLang="(?:en|pt-PT|fr|it|de)"/i);
+    assert.match(html, /Frontend Product Editor \+ AI/);
+    assert.match(html, /89 €/);
+    assert.match(html, /179 €/);
+  }
+});
+
 test("ships the final concept without starter artifacts", async () => {
   const [page, siteChrome, layout, packageJson] = await Promise.all([
     readFile(new URL("../app/page.tsx", import.meta.url), "utf8"),
@@ -153,11 +175,21 @@ test("exports every public commercial route", async () => {
     "../production/productos/frontend-product-editor-ai/index.html",
     "../production/privacidad/frontend-product-editor-ai/index.html",
     "../production/condiciones/frontend-product-editor-ai/index.html",
+    "../production/en/products/frontend-product-editor-ai/index.html",
+    "../production/pt/produtos/frontend-product-editor-ai/index.html",
+    "../production/fr/produits/frontend-product-editor-ai/index.html",
+    "../production/it/prodotti/frontend-product-editor-ai/index.html",
+    "../production/de/produkte/frontend-product-editor-ai/index.html",
   ];
   const renderedPages = await Promise.all(publicFiles.map(file => readFile(new URL(file, import.meta.url), "utf8")));
   assert.match(renderedPages[2], /Frontend Product Editor \+ AI/);
   assert.match(renderedPages[3], /Privacidad del producto/);
   assert.match(renderedPages[4], /Compra, soporte/);
+  assert.match(renderedPages[5], /Fix the product/);
+  assert.match(renderedPages[6], /Corrija o produto/);
+  assert.match(renderedPages[7], /Corrigez le produit/);
+  assert.match(renderedPages[8], /Correggi il prodotto/);
+  assert.match(renderedPages[9], /Korrigieren Sie das Produkt/);
   renderedPages.forEach(html => assert.doesNotMatch(html, /https?:\/\/(?:localhost|127\.0\.0\.1)/i));
   const productMedia = Array.from(renderedPages[2].matchAll(/(?:src|href)="(\/productos\/fpe-ai\/[^"?#]+)(?:[?#][^"]*)?"/g), match => match[1]);
   assert.ok(productMedia.length >= 6);

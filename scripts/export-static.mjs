@@ -13,6 +13,11 @@ const routes = [
   ["/productos/frontend-product-editor-ai", "productos/frontend-product-editor-ai/index.html"],
   ["/privacidad/frontend-product-editor-ai", "privacidad/frontend-product-editor-ai/index.html"],
   ["/condiciones/frontend-product-editor-ai", "condiciones/frontend-product-editor-ai/index.html"],
+  ["/en/products/frontend-product-editor-ai", "en/products/frontend-product-editor-ai/index.html"],
+  ["/pt/produtos/frontend-product-editor-ai", "pt/produtos/frontend-product-editor-ai/index.html"],
+  ["/fr/produits/frontend-product-editor-ai", "fr/produits/frontend-product-editor-ai/index.html"],
+  ["/it/prodotti/frontend-product-editor-ai", "it/prodotti/frontend-product-editor-ai/index.html"],
+  ["/de/produkte/frontend-product-editor-ai", "de/produkte/frontend-product-editor-ai/index.html"],
 ];
 
 await rm(productionDirectory, { recursive: true, force: true });
