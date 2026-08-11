@@ -14,6 +14,8 @@ const faqs = [
   ["¿Cuándo empieza la prueba de 14 días?", "La prueba empieza después de la primera conexión correcta con PrestaShop, no al instalar la extensión. Durante esos 14 días están disponibles todas las funciones."],
   ["¿Qué queda disponible cuando termina la prueba?", "El modo gratuito permanente sigue identificando el producto o la combinación y abre su ficha exacta del Back-Office. La edición desde el Front-Office, la verificación, el historial, la IA, el dictado y los prompts requieren licencia."],
   ["¿La licencia es una suscripción?", "No. Tienda y Pro son licencias perpetuas de pago único. No hay cuotas mensuales ni renovaciones obligatorias."],
+  ["¿Qué soporte incluye la licencia?", "Incluye ayuda para instalar, conectar y activar la extensión, recuperar activaciones e investigar comportamientos reproducibles. El soporte no incluye desarrollos a medida ni la administración de PrestaShop o de servicios de terceros."],
+  ["¿Puedo solicitar una devolución?", "Sí, en los supuestos descritos en la política de devoluciones y siempre que lo exija la normativa aplicable. Lemon Squeezy procesa el reembolso como comerciante registrado."],
   ["¿Qué diferencia hay entre Tienda y Pro?", "Tienda permite gestionar una tienda PrestaShop y hasta seis perfiles de navegador. Pro permite entre dos y cinco tiendas y hasta veinte perfiles."],
   ["¿Qué es una activación de navegador?", "Cada perfil de Chrome o Edge donde activas la licencia cuenta como una activación. Puedes liberarla desde la propia extensión antes de cambiar de equipo o perfil."],
   ["¿Instala algún módulo o modifica PrestaShop?", "No. Es una extensión de Chrome y Edge. No copia archivos, no crea tablas y no añade overrides a la tienda."],
@@ -246,6 +248,7 @@ export default function ProductPage() {
             <span><b>4</b> Activa tu clave</span>
           </div>
           <p className="commercial-proof">Compatibilidad probada con PrestaShop 1.6, 1.7, 8 y 9 en Google Chrome y Microsoft Edge.</p>
+          <p className="commercial-policy-note">Antes de comprar, consulta las <a href="/condiciones/frontend-product-editor-ai/">condiciones de licencia, soporte y devoluciones</a>.</p>
         </div>
       </section>
 
@@ -377,7 +380,7 @@ export default function ProductPage() {
         </div>
       </section>
 
-      <p className="product-privacy-link shell">Antes de instalar, consulta la <a href="https://aisolutions.peplogar.com/privacidad/frontend-product-editor-ai/">política de privacidad y tratamiento de datos</a>.</p>
+      <p className="product-privacy-link shell">Antes de instalar o comprar, consulta la <a href="/privacidad/frontend-product-editor-ai/">política de privacidad</a> y las <a href="/condiciones/frontend-product-editor-ai/">condiciones de licencia, soporte y devoluciones</a>.</p>
 
       <SiteFooter />
     </main>

@@ -59,6 +59,7 @@ export function SiteFooter() {
         <a href="mailto:info@aisolutions.peplogar.com">info@aisolutions.peplogar.com</a>
         <a href="tel:+34911419634">(+34) 91 141 96 34</a>
         <a href="/privacidad/frontend-product-editor-ai/">Privacidad de Frontend Product Editor + AI</a>
+        <a href="/condiciones/frontend-product-editor-ai/">Compra, soporte y devoluciones</a>
         <p>© {new Date().getFullYear()} Pep Logar AI Solutions</p>
       </div>
     </footer>

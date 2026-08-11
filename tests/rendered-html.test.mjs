@@ -42,18 +42,20 @@ test("server-renders the Pep Logar AI Solutions concept", async () => {
   assert.doesNotMatch(html, /codex-preview|SkeletonPreview|react-loading-skeleton/i);
 });
 
-test("server-renders the product catalog and product landing page", async () => {
-  const [catalogResponse, productResponse, privacyResponse] = await Promise.all([
+test("server-renders the product catalog, product and commercial policies", async () => {
+  const [catalogResponse, productResponse, privacyResponse, termsResponse] = await Promise.all([
     render("/productos"),
     render("/productos/frontend-product-editor-ai"),
     render("/privacidad/frontend-product-editor-ai"),
+    render("/condiciones/frontend-product-editor-ai"),
   ]);
 
   assert.equal(catalogResponse.status, 200);
   assert.equal(productResponse.status, 200);
   assert.equal(privacyResponse.status, 200);
+  assert.equal(termsResponse.status, 200);
 
-  const [catalog, product, privacy] = await Promise.all([catalogResponse.text(), productResponse.text(), privacyResponse.text()]);
+  const [catalog, product, privacy, terms] = await Promise.all([catalogResponse.text(), productResponse.text(), privacyResponse.text(), termsResponse.text()]);
   assert.match(catalog, /Software que resuelve/);
   assert.match(catalog, /Frontend Product Editor \+ AI/);
   assert.match(catalog, /href="\/productos\/frontend-product-editor-ai"/);
@@ -80,7 +82,8 @@ test("server-renders the product catalog and product landing page", async () => 
   assert.doesNotMatch(product, /Solicitar%20acceso/i);
   assert.match(product, /Preguntas frecuentes/);
   assert.match(product, /6 idiomas/);
-  assert.match(product, /href="https:\/\/aisolutions\.peplogar\.com\/privacidad\/frontend-product-editor-ai\/"/);
+  assert.match(product, /href="\/privacidad\/frontend-product-editor-ai\/"/);
+  assert.match(product, /href="\/condiciones\/frontend-product-editor-ai\/"/);
 
   assert.match(privacy, /Privacidad del producto/);
   assert.match(privacy, /B86378981/);
@@ -94,6 +97,13 @@ test("server-renders the product catalog and product landing page", async () => 
   assert.match(privacy, /Lemon Squeezy/i);
   assert.match(privacy, /no solicita, recibe ni almacena datos de tarjeta/i);
   assert.match(privacy, /Google no procesa el pago ni es el vendedor/i);
+
+  assert.match(terms, /Compra, soporte/);
+  assert.match(terms, /comerciante registrado/i);
+  assert.match(terms, /14 días naturales posteriores a la compra/i);
+  assert.match(terms, /derechos irrenunciables del consumidor/i);
+  assert.match(terms, /Mis pedidos de Lemon Squeezy/i);
+  assert.match(terms, /dos días laborables/i);
 });
 
 test("renders accessible desktop and mobile navigation on every public route", async () => {
@@ -102,6 +112,7 @@ test("renders accessible desktop and mobile navigation on every public route", a
     "/productos",
     "/productos/frontend-product-editor-ai",
     "/privacidad/frontend-product-editor-ai",
+    "/condiciones/frontend-product-editor-ai",
   ];
   const destinations = ["/#capacidades", "/productos/", "/#metodo", "/#contacto"];
   const pages = await Promise.all(routes.map(async route => (await render(route)).text()));
@@ -140,10 +151,12 @@ test("exports every public commercial route", async () => {
     "../production/productos/index.html",
     "../production/productos/frontend-product-editor-ai/index.html",
     "../production/privacidad/frontend-product-editor-ai/index.html",
+    "../production/condiciones/frontend-product-editor-ai/index.html",
   ];
   const renderedPages = await Promise.all(publicFiles.map(file => readFile(new URL(file, import.meta.url), "utf8")));
   assert.match(renderedPages[2], /Frontend Product Editor \+ AI/);
   assert.match(renderedPages[3], /Privacidad del producto/);
+  assert.match(renderedPages[4], /Compra, soporte/);
   renderedPages.forEach(html => assert.doesNotMatch(html, /https?:\/\/(?:localhost|127\.0\.0\.1)/i));
   const productMedia = Array.from(renderedPages[2].matchAll(/(?:src|href)="(\/productos\/fpe-ai\/[^"?#]+)(?:[?#][^"]*)?"/g), match => match[1]);
   assert.ok(productMedia.length >= 6);
