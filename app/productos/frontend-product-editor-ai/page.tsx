@@ -78,7 +78,8 @@ export default function ProductPage() {
       <section className="product-hero shell">
         <div className="product-hero-copy">
           <p className="eyebrow"><span /> Producto · Chrome / Edge · PrestaShop 1.6–9</p>
-          <h1>Corrige el producto<br /><em>que ya estás viendo.</em></h1>
+          <h1><span className="product-brand">Pep Logar</span>Frontend Product<br /><em>Editor + AI</em></h1>
+          <p className="product-hero-promise">Corrige el producto que ya estás viendo.</p>
           <p className="product-hero-lede">Edita precios, stock, referencias y contenidos desde la ficha pública de tu tienda PrestaShop, sin volver a localizar el producto en el Back-Office.</p>
           <div className="hero-actions">
             <a className="button button-dark" href="#prueba">Probar gratis 14 días <span>↓</span></a>

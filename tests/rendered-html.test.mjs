@@ -61,6 +61,7 @@ test("server-renders the product catalog, product and commercial policies", asyn
   assert.match(catalog, /href="\/productos\/frontend-product-editor-ai"/);
 
   assert.match(product, /Corrige el producto/);
+  assert.match(product, /<h1>[\s\S]*product-brand[\s\S]*Pep Logar[\s\S]*Frontend Product[\s\S]*Editor \+ AI[\s\S]*<\/h1>/);
   assert.match(product, /PrestaShop 1\.6/);
   assert.match(product, /Sin módulos/);
   assert.match(product, /demo-fpe-ai\.mp4/);
