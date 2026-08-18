@@ -59,7 +59,7 @@ export default function ProductPage() {
     description: "Extensión para editar productos PrestaShop desde su ficha pública utilizando la sesión autenticada del Back-Office, sin instalar módulos.",
     url: "https://aisolutions.peplogar.com/productos/frontend-product-editor-ai/",
     image: "https://aisolutions.peplogar.com/productos/fpe-ai/og-product.png",
-    softwareVersion: "1.27.0",
+    softwareVersion: "1.27.1",
     inLanguage: ["es", "en", "fr", "it", "de", "pt"],
     offers: {
       "@type": "AggregateOffer",
@@ -88,7 +88,7 @@ export default function ProductPage() {
           <p className="product-hero-promise">Corrige el producto que ya estás viendo.</p>
           <p className="product-hero-lede">Edita precios, stock, referencias y contenidos desde la ficha pública de tu tienda PrestaShop, sin volver a localizar el producto en el Back-Office.</p>
           <div className="hero-actions">
-            <a className="button button-dark" href="#prueba">Probar gratis 14 días <span>↓</span></a>
+            <a className="button button-dark" href={fpeCheckoutLinks.chromeWebStore} target="_blank" rel="noopener noreferrer">Instalar y probar 14 días <span>↗</span></a>
             <a className="text-link" href="/productos/fpe-ai/Pep-Logar-FPE-AI-Guia-visual.pdf" download>Descargar guía PDF <span>↓</span></a>
             <a className="text-link" href="#demostracion">Ver demostración <span>↓</span></a>
           </div>
@@ -377,13 +377,13 @@ export default function ProductPage() {
 
       <section className="product-cta shell" id="disponibilidad">
         <div>
-          <p className="eyebrow light"><span /> Próximo lanzamiento</p>
+          <p className="eyebrow light"><span /> Ya disponible</p>
           <h2>Instala, conecta<br />y decide después de probar.</h2>
-          <p>La extensión se publicará en Chrome Web Store. Desde allí podrás iniciar la prueba completa de 14 días y, si te encaja, adquirir una licencia perpetua mediante Lemon Squeezy.</p>
+          <p>Instala la extensión desde Chrome Web Store, conecta tu tienda y utiliza todas las funciones durante 14 días. Después puedes continuar con el modo gratuito o activar una licencia perpetua.</p>
         </div>
         <div className="product-cta-actions">
-          <a className="button button-light" href="#planes">Comparar planes <span>↑</span></a>
-          <span className="availability-status">Enlace de instalación disponible tras la publicación</span>
+          <a className="button button-light" href={fpeCheckoutLinks.chromeWebStore} target="_blank" rel="noopener noreferrer">Instalar extensión <span>↗</span></a>
+          <span className="availability-status">Prueba completa de 14 días · sin tarjeta</span>
         </div>
       </section>
 

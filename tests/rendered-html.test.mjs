@@ -66,7 +66,7 @@ test("server-renders the product catalog, product and commercial policies", asyn
   assert.match(product, /Sin módulos/);
   assert.match(product, /demo-fpe-ai\.mp4/);
   assert.match(product, /og-product\.png/);
-  assert.match(product, /Probar gratis 14 días/);
+  assert.match(product, /Instalar y probar 14 días/);
   assert.match(product, /Modo gratuito permanente/);
   assert.match(product, /¿Puedo comprarlo si no tiene stock\?/);
   assert.match(product, /Comparación completa/);
@@ -87,6 +87,9 @@ test("server-renders the product catalog, product and commercial policies", asyn
   assert.match(product, /href="\/condiciones\/frontend-product-editor-ai\/"/);
   assert.match(product, /enabled=2031942/);
   assert.match(product, /enabled=2031964/);
+  assert.match(product, /https:\/\/chromewebstore\.google\.com\/detail\/ockepcmaocllmefmoklppidepohbmmdk/);
+  assert.match(product, /Ya disponible/);
+  assert.doesNotMatch(product, /Próximo lanzamiento|Enlace de instalación disponible tras la publicación/);
 
   assert.match(privacy, /Privacidad del producto/);
   assert.match(privacy, /B86378981/);
@@ -151,6 +154,8 @@ test("server-renders every localized product page with its own copy, video and h
     assert.match(html, /179 €/);
     assert.match(html, /enabled=2031942/);
     assert.match(html, /enabled=2031964/);
+    assert.match(html, /https:\/\/chromewebstore\.google\.com\/detail\/ockepcmaocllmefmoklppidepohbmmdk/);
+    assert.doesNotMatch(html, /Coming soon|Próximo lançamento|Prochain lancement|Prossimo lancio|Demnächst/);
   }
 });
 
