@@ -85,6 +85,8 @@ test("server-renders the product catalog, product and commercial policies", asyn
   assert.match(product, /6 idiomas/);
   assert.match(product, /href="\/privacidad\/frontend-product-editor-ai\/"/);
   assert.match(product, /href="\/condiciones\/frontend-product-editor-ai\/"/);
+  assert.match(product, /enabled=2031942/);
+  assert.match(product, /enabled=2031964/);
 
   assert.match(privacy, /Privacidad del producto/);
   assert.match(privacy, /B86378981/);
@@ -147,6 +149,8 @@ test("server-renders every localized product page with its own copy, video and h
     assert.match(html, /Frontend Product Editor \+ AI/);
     assert.match(html, /89 €/);
     assert.match(html, /179 €/);
+    assert.match(html, /enabled=2031942/);
+    assert.match(html, /enabled=2031964/);
   }
 });
 

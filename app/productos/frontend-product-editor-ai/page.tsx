@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { fpeCheckoutLinks } from "../../fpeCheckoutLinks";
 import { ProductLanguageSwitcher, productLocalePaths } from "../../ProductLanguageSwitcher";
 import { SiteFooter, SiteHeader } from "../../SiteChrome";
 
@@ -208,7 +209,7 @@ export default function ProductPage() {
                 <li>Todas las funciones comerciales</li>
                 <li>Licencia perpetua, sin cuotas mensuales</li>
               </ul>
-              <a className="button button-light" href="#disponibilidad">Elegir Tienda <span>↓</span></a>
+              <a className="button button-light" href={fpeCheckoutLinks.store} target="_blank" rel="noopener noreferrer">Comprar Tienda <span>↗</span></a>
             </article>
             <article className="pricing-card">
               <div className="pricing-card-heading">
@@ -222,7 +223,7 @@ export default function ProductPage() {
                 <li>Todas las funciones comerciales</li>
                 <li>Licencia perpetua, sin cuotas mensuales</li>
               </ul>
-              <a className="button button-outline-light" href="#disponibilidad">Elegir Pro <span>↓</span></a>
+              <a className="button button-outline-light" href={fpeCheckoutLinks.pro} target="_blank" rel="noopener noreferrer">Comprar Pro <span>↗</span></a>
             </article>
           </div>
           <div className="plan-comparison-heading">
