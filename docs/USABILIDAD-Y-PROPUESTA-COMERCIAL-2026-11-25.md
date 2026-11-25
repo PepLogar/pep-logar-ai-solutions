@@ -79,3 +79,25 @@ A 360 px de ancho, los dos enlaces «Ver ficha» empiezan a **310 y 520 px** del
 La comprobación de tipos de `app/` pasó. La ejecución global de TypeScript también incluye `db/` y `worker/` y señala tres tipos de Cloudflare sin resolver en esos archivos. La exportación estática de Plesk se generó correctamente.
 
 **Capturas de la versión comprobada.** [Portada en móvil](evidencias/usabilidad-2026-11-25/portada-360.jpg) · [Portada en escritorio](evidencias/usabilidad-2026-11-25/portada-1440.jpg) · [Catálogo en móvil](evidencias/usabilidad-2026-11-25/catalogo-360.jpg) · [Catálogo en escritorio](evidencias/usabilidad-2026-11-25/catalogo-1440.jpg) · [Planes en móvil](evidencias/usabilidad-2026-11-25/planes-360.jpg) · [Formulario en móvil](evidencias/usabilidad-2026-11-25/contacto-360.jpg)
+
+## Verificación en la web publicada
+
+El 25 de noviembre de 2026, al iniciar la comprobación, Plesk ya servía la versión `82b8471`. Las once páginas HTML, las seis hojas de estilo y el JavaScript del formulario respondieron por HTTPS con estado 200. El contenido de cada respuesta coincidió byte por byte con el archivo del commit. [Versión publicada](https://github.com/PepLogar/pep-logar-ai-solutions/commit/82b8471)
+
+Se recorrieron primero la portada y el catálogo, y después las fichas y el contacto, en Chrome con un móvil emulado de 360 × 800 y en escritorio a 1440 × 900.
+
+| Recorrido | Resultado observado en producción |
+|---|---|
+| Portada | En ambos tamaños se lee la oferta de desarrollo a medida tradicional y con agentes de IA. Los dos enlaces llevan al formulario y al catálogo. El ejemplo del pedido aparece debajo del texto en móvil y a su derecha en escritorio. |
+| Catálogo | Los dos productos, sus capturas y sus acciones caben en la primera pantalla móvil. Los dos enlaces «Ver ficha» empiezan a 310 y 520 px del borde superior. En escritorio, las tarjetas quedan en dos columnas y los botones se alinean a 641 px del borde superior. |
+| Fichas | En móvil destacan la demo del editor y la ayuda de Pensiones Lab. En escritorio destacan «Instalar y probar 14 días» y «Abrir la consola gratuita». El vídeo se reproduce y dura 46 segundos. La comparativa cabe en su contenedor en ambos tamaños. La captura de Pensiones Lab se abre a su resolución completa de 2160 × 825 px. |
+| Contacto | El aviso de que se preparará un borrador precede al primer campo. Se comprobó el destino HTTPS del formulario sin JavaScript con datos ficticios y consentimiento. Respondió con estado 200 y `Cache-Control: no-store`. El cuerpo del enlace «Abrir borrador» conservó exactamente «revisión & fin». La prueba terminó antes de enviar correo. |
+
+En los dos tamaños se abrieron y cerraron las miniaturas de ambos productos. «Primeros pasos» llevó a la sección correspondiente de la ayuda de Demarquía. En la ficha de Pensiones Lab, el botón principal abrió la ayuda en móvil y la consola en escritorio. Los destinos respondieron con estado 200. Con JavaScript desactivado, el formulario mostró el aviso de tratamiento por HTTPS y la casilla obligatoria de consentimiento desmarcada.
+
+| Captura del dominio público | Móvil | Escritorio |
+|---|---|---|
+| Portada | [360 px](evidencias/produccion-2026-11-25/portada-360.jpg) | [1440 px](evidencias/produccion-2026-11-25/portada-1440.jpg) |
+| Catálogo | [360 px](evidencias/produccion-2026-11-25/catalogo-360.jpg) | [1440 px](evidencias/produccion-2026-11-25/catalogo-1440.jpg) |
+| Planes del editor | [360 px](evidencias/produccion-2026-11-25/planes-360.jpg) | [1440 px](evidencias/produccion-2026-11-25/planes-1440.jpg) |
+| Formulario sin JavaScript | [360 px](evidencias/produccion-2026-11-25/contacto-sin-js-360.jpg) | [1440 px](evidencias/produccion-2026-11-25/contacto-sin-js-1440.jpg) |
