@@ -66,7 +66,7 @@ test("static export preserves the published release through failures and concurr
   assert.deepEqual(await readdir(production), ["previous.txt"]);
   await assert.rejects(readdir(workspace), { code: "ENOENT" });
 
-  const emptyRender = run([], { EMPTY_ROUTE: "/productos" });
+  const emptyRender = run([], { EMPTY_ROUTE: "/productos/pensiones-lab" });
   assert.notEqual(emptyRender.status, 0);
   assert.match(emptyRender.stderr, /expected a complete HTML document/);
   assert.deepEqual(await readdir(production), ["previous.txt"]);

@@ -14,6 +14,7 @@ const routes = [
   ["/", "index.html"],
   ["/productos", "productos/index.html"],
   ["/productos/frontend-product-editor-ai", "productos/frontend-product-editor-ai/index.html"],
+  ["/productos/pensiones-lab", "productos/pensiones-lab/index.html"],
   ["/privacidad/frontend-product-editor-ai", "privacidad/frontend-product-editor-ai/index.html"],
   ["/condiciones/frontend-product-editor-ai", "condiciones/frontend-product-editor-ai/index.html"],
   ["/en/products/frontend-product-editor-ai", "en/products/frontend-product-editor-ai/index.html"],

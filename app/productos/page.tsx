@@ -3,7 +3,7 @@ import { SiteFooter, SiteHeader } from "../SiteChrome";
 
 export const metadata: Metadata = {
   title: "Productos | Pep Logar AI Solutions",
-  description: "Software propio de Pep Logar AI Solutions para resolver tareas reales con automatización e inteligencia artificial.",
+  description: "Conoce el editor de productos para PrestaShop y Pensiones Lab, nuestro simulador gratuito de las pensiones y las cuentas públicas de España.",
   alternates: { canonical: "/productos/" },
 };
 
@@ -16,7 +16,7 @@ export default function ProductsPage() {
         <p className="eyebrow"><span /> Productos propios</p>
         <div className="catalog-hero-grid">
           <h1>Software que resuelve.<br /><em>Desde el primer uso.</em></h1>
-          <p>Convertimos procesos que conocemos de primera mano en herramientas concretas, instalables y fáciles de controlar.</p>
+          <p>Desarrollamos software para editar un catálogo, comparar escenarios y tomar decisiones con más información.</p>
         </div>
       </section>
 
@@ -27,7 +27,7 @@ export default function ProductsPage() {
         </div>
         <article className="catalog-product-card">
           <div className="catalog-product-copy">
-            <div className="product-kicker"><span>01</span> Chrome · Edge · PrestaShop</div>
+            <div className="product-kicker">Extensión · Chrome · Edge · PrestaShop</div>
             <h3>Pep Logar Frontend<br />Product Editor + AI</h3>
             <p>Edita productos mientras recorres el catálogo público. Cambia precio, stock, estado o referencia y mejora sus contenidos con IA, sin instalar módulos en PrestaShop.</p>
             <div className="tag-list">
@@ -38,6 +38,18 @@ export default function ProductsPage() {
           <a className="catalog-product-visual" href="/productos/frontend-product-editor-ai" aria-label="Ver Pep Logar Frontend Product Editor + AI">
             <img src="/productos/fpe-ai/frontoffice-editor.png" alt="Editor lateral de productos abierto sobre una tienda PrestaShop" />
             <span className="visual-badge"><i /> Datos verificados desde el Back-Office</span>
+          </a>
+        </article>
+        <article className="catalog-product-card">
+          <div className="catalog-product-copy">
+            <div className="product-kicker">Software gratuito · Simulador web</div>
+            <h3>Pensiones Lab</h3>
+            <p>¿Qué pasaría con las pensiones si retrasaras un año la edad de jubilación? Prueba esa medida, cambia impuestos o cotizaciones y compara cómo evolucionan las pensiones y la deuda pública de España hasta 2070.</p>
+            <div className="tag-list"><span>España</span><span>2026–2070</span><span>Para ordenador</span></div>
+            <a className="button button-dark" href="/productos/pensiones-lab/">Conocer Pensiones Lab <span aria-hidden="true">→</span></a>
+          </div>
+          <a className="catalog-product-visual" href="/productos/pensiones-lab/" aria-label="Ver la ficha de Pensiones Lab">
+            <img src="/productos/pensiones-lab/detalle.png" width={1506} height={692} alt="Consola de Pensiones Lab con la edad de jubilación en 65 años y el gráfico de deuda pública." loading="lazy" />
           </a>
         </article>
       </section>

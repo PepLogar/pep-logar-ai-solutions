@@ -71,6 +71,12 @@ test("server-renders the product catalog, product and commercial policies", asyn
   assert.match(catalog, /Software que resuelve/);
   assert.match(catalog, /Frontend Product Editor \+ AI/);
   assert.match(catalog, /href="\/productos\/frontend-product-editor-ai"/);
+  const cards = catalog.match(/<article\b[^>]*>[\s\S]*?<\/article>/gi) ?? [];
+  const pensionsCard = cards.find(card => /<a\b[^>]*href="\/productos\/pensiones-lab\/"/.test(card));
+  assert.ok(pensionsCard, "the catalog card links to the Pensiones Lab product page");
+  assert.match(pensionsCard, /Pensiones Lab/i);
+  assert.match(pensionsCard, /\b(?:gratis|gratuit[ao])\b/i);
+  assert.match(pensionsCard, /<img\b[^>]*src="\/productos\/pensiones-lab\/detalle\.png"/);
 
   assert.match(product, /Corrige el producto/);
   assert.match(product, /<h1>[\s\S]*product-brand[\s\S]*Pep Logar[\s\S]*Frontend Product[\s\S]*Editor \+ AI[\s\S]*<\/h1>/);
@@ -129,6 +135,7 @@ test("renders accessible desktop and mobile navigation on every public route", a
     "/",
     "/productos",
     "/productos/frontend-product-editor-ai",
+    "/productos/pensiones-lab",
     "/privacidad/frontend-product-editor-ai",
     "/condiciones/frontend-product-editor-ai",
   ];
@@ -209,10 +216,11 @@ test("exports every public commercial route", async () => {
     "../production/fr/produits/frontend-product-editor-ai/index.html",
     "../production/it/prodotti/frontend-product-editor-ai/index.html",
     "../production/de/produkte/frontend-product-editor-ai/index.html",
+    "../production/productos/pensiones-lab/index.html",
   ];
   const renderedPages = await Promise.all(publicFiles.map(file => readFile(new URL(file, import.meta.url), "utf8")));
   assertContactFallback(renderedPages[0]);
-  const documentLanguages = ["es", "es", "es", "es", "es", "en", "pt-PT", "fr", "it", "de"];
+  const documentLanguages = ["es", "es", "es", "es", "es", "en", "pt-PT", "fr", "it", "de", "es"];
   for (const [index, html] of renderedPages.entries()) {
     assert.ok(html.includes('<html lang="' + documentLanguages[index] + '">'), publicFiles[index]);
   }
@@ -224,6 +232,20 @@ test("exports every public commercial route", async () => {
   assert.match(renderedPages[7], /Corrigez le produit/);
   assert.match(renderedPages[8], /Correggi il prodotto/);
   assert.match(renderedPages[9], /Korrigieren Sie das Produkt/);
+  const pensionsPage = renderedPages[10];
+  assert.match(pensionsPage, /<a\b[^>]*href="https:\/\/demarquia\.org\/pensioneslab\/consola\.html"[^>]*>\s*Abrir la consola gratuita(?:\s|<)/);
+  assert.match(pensionsPage, /<img\b[^>]*src="\/productos\/pensiones-lab\/detalle\.png"/);
+  assert.match(pensionsPage, /<a\b[^>]*href="\/productos\/pensiones-lab\/consola\.png"/);
+  for (const filename of ["detalle.png", "consola.png"]) {
+    const [source, exported] = await Promise.all([
+      readFile(new URL(`../public/productos/pensiones-lab/${filename}`, import.meta.url)),
+      readFile(new URL(`../production/productos/pensiones-lab/${filename}`, import.meta.url)),
+    ]);
+    assert.equal(source.subarray(0, 8).toString("hex"), "89504e470d0a1a0a", filename);
+    assert.ok(exported.equals(source), `the export includes the original ${filename}`);
+  }
+  const sitemap = await readFile(new URL("../production/sitemap.xml", import.meta.url), "utf8");
+  assert.match(sitemap, /<loc>https:\/\/aisolutions\.peplogar\.com\/productos\/pensiones-lab\/<\/loc>/);
   renderedPages.forEach(html => assert.doesNotMatch(html, /https?:\/\/(?:localhost|127\.0\.0\.1)/i));
   const productMedia = Array.from(renderedPages[2].matchAll(/(?:src|href)="(\/productos\/fpe-ai\/[^"?#]+)(?:[?#][^"]*)?"/g), match => match[1]);
   assert.ok(productMedia.length >= 6);
