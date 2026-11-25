@@ -33,12 +33,16 @@ test("server-renders the Pep Logar AI Solutions concept", async () => {
 
   const html = await response.text();
   assert.match(html, /<html lang="es">/i);
-  assert.match(html, /<title>Pep Logar AI Solutions \| Software e IA que hacen avanzar el trabajo<\/title>/i);
+  assert.match(html, /<title>Software a medida y agentes de IA \| Pep Logar AI Solutions<\/title>/i);
   assert.match(html, /Menos tareas\./);
   assert.match(html, /Más empresa\./);
-  assert.match(html, /Agentes operativos/);
-  assert.match(html, /Conexiones MCP/);
-  assert.match(html, /Humano en el circuito/);
+  const hero = html.match(/<section\b[^>]*\bid="inicio"[^>]*>[\s\S]*?<\/section>/i)?.[0] ?? "";
+  assert.match(hero, /software a medida/i);
+  assert.match(hero, /tradicional/i);
+  assert.match(hero, /agentes de (?:inteligencia artificial|IA)/i);
+  assert.match(hero, /href="\/?#contacto"[^>]*>\s*Cuéntanos qué tarea repites/i);
+  assert.match(hero, /href="\/productos\/"[^>]*>\s*Ver nuestros productos/i);
+  assert.match(html, /Quién da el visto bueno/);
   assert.match(html, /mailto:info@aisolutions\.peplogar\.com/);
   assert.match(html, /aisolutions\.peplogar\.com/);
   assert.match(html, /Todo en Tinta Pep Logar S\.L\./);
@@ -48,8 +52,10 @@ test("server-renders the Pep Logar AI Solutions concept", async () => {
   assert.match(html, /<input(?=[^>]*name="email")(?=[^>]*type="email")[^>]*>/);
   assert.match(html, /<select(?=[^>]*name="interest")[^>]*>/);
   assert.match(html, /<input(?=[^>]*name="consent")(?=[^>]*type="checkbox")[^>]*>/);
-  assert.match(html, /Preparar consulta/);
-  assert.match(html, /Esta web no almacena tus datos/);
+  assert.match(html, /Abrir borrador en mi correo/);
+  const formIntro = html.match(/<form\b[^>]*class="contact-form"[^>]*>([\s\S]*?)<input\b/i)?.[1] ?? "";
+  assert.match(formIntro, /borrador/i);
+  assert.match(html, /Escribir por correo/i);
   assert.match(html, /property="og:image" content="https:\/\/aisolutions\.peplogar\.com\/og\.png"/);
   assert.doesNotMatch(html, /codex-preview|SkeletonPreview|react-loading-skeleton/i);
 });
@@ -68,9 +74,11 @@ test("server-renders the product catalog, product and commercial policies", asyn
   assert.equal(termsResponse.status, 200);
 
   const [catalog, product, privacy, terms] = await Promise.all([catalogResponse.text(), productResponse.text(), privacyResponse.text(), termsResponse.text()]);
-  assert.match(catalog, /Software que resuelve/);
+  assert.match(catalog, /<h1\b[^>]*>[^<]*(?:productos|software)[^<]*<\/h1>/i);
   assert.match(catalog, /Frontend Product Editor \+ AI/);
-  assert.match(catalog, /href="\/productos\/frontend-product-editor-ai"/);
+  assert.match(catalog, /href="\/productos\/frontend-product-editor-ai\/?"/);
+  assert.match(catalog, /href="\/productos\/frontend-product-editor-ai\/#demostracion"/);
+  assert.match(catalog, /href="https:\/\/demarquia\.org\/pensioneslab\/ayuda\.html#pasos"/);
   const cards = catalog.match(/<article\b[^>]*>[\s\S]*?<\/article>/gi) ?? [];
   const pensionsCard = cards.find(card => /<a\b[^>]*href="\/productos\/pensiones-lab\/"/.test(card));
   assert.ok(pensionsCard, "the catalog card links to the Pensiones Lab product page");

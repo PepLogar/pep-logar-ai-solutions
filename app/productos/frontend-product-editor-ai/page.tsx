@@ -1,7 +1,16 @@
 import type { Metadata } from "next";
+import { FpeProductActions } from "../../FpeProductActions";
+import { FpePlanComparison } from "../../FpePlanComparison";
 import { fpeCheckoutLinks } from "../../fpeCheckoutLinks";
 import { ProductLanguageSwitcher, productLocalePaths } from "../../ProductLanguageSwitcher";
 import { SiteFooter, SiteHeader } from "../../SiteChrome";
+
+const actionCopy = {
+  trial: "Instalar y probar 14 días",
+  demo: "Ver la demo de 46 segundos",
+  guide: "Descargar guía PDF",
+  device: "Para instalar la extensión necesitas Chrome o Edge de escritorio.",
+};
 
 const benefits = [
   ["01", "Edita donde detectas el cambio", "Abre la ficha pública, pulsa la píldora flotante y modifica el producto sin volver a localizarlo en el Back-Office."],
@@ -87,11 +96,7 @@ export default function ProductPage() {
           <h1><span className="product-brand">Pep Logar</span>Frontend Product<br /><em>Editor + AI</em></h1>
           <p className="product-hero-promise">Corrige el producto que ya estás viendo.</p>
           <p className="product-hero-lede">Edita precios, stock, referencias y contenidos desde la ficha pública de tu tienda PrestaShop, sin volver a localizar el producto en el Back-Office.</p>
-          <div className="hero-actions">
-            <a className="button button-dark" href={fpeCheckoutLinks.chromeWebStore} target="_blank" rel="noopener noreferrer">Instalar y probar 14 días <span>↗</span></a>
-            <a className="text-link" href="/productos/fpe-ai/Pep-Logar-FPE-AI-Guia-visual.pdf" download>Descargar guía PDF <span>↓</span></a>
-            <a className="text-link" href="#demostracion">Ver demostración <span>↓</span></a>
-          </div>
+          <FpeProductActions copy={actionCopy} demoHref="#demostracion" />
           <div className="product-proof" aria-label="Ventajas principales">
             <span>Sin tarjeta para probar</span><span>Modo gratuito permanente</span><span>Pago único</span><span>Sin módulos</span>
           </div>
@@ -226,28 +231,7 @@ export default function ProductPage() {
               <a className="button button-outline-light" href={fpeCheckoutLinks.pro} target="_blank" rel="noopener noreferrer">Comprar Pro <span>↗</span></a>
             </article>
           </div>
-          <div className="plan-comparison-heading">
-            <p className="section-label">Comparación completa</p>
-            <h3>Qué conserva el modo gratuito y qué desbloquea cada licencia.</h3>
-          </div>
-          <div className="plan-comparison-wrap" aria-label="Tabla desplazable de comparación de planes">
-            <table className="plan-comparison">
-              <thead>
-                <tr><th scope="col">Función</th><th scope="col">Gratis</th><th scope="col">Tienda · 89 €</th><th scope="col">Pro · 179 €</th></tr>
-              </thead>
-              <tbody>
-                <tr><th scope="row">Identificar el producto y abrir su ficha exacta del Back-Office</th><td><span className="comparison-yes">✓</span></td><td><span className="comparison-yes">✓</span></td><td><span className="comparison-yes">✓</span></td></tr>
-                <tr><th scope="row">Edición desde la ficha pública</th><td>—</td><td><span className="comparison-yes">✓</span></td><td><span className="comparison-yes">✓</span></td></tr>
-                <tr><th scope="row">Revisión y verificación del guardado</th><td>—</td><td><span className="comparison-yes">✓</span></td><td><span className="comparison-yes">✓</span></td></tr>
-                <tr><th scope="row">Historial y deshacer cambios</th><td>—</td><td><span className="comparison-yes">✓</span></td><td><span className="comparison-yes">✓</span></td></tr>
-                <tr><th scope="row">Asistente de IA con tu propia clave</th><td>—</td><td><span className="comparison-yes">✓</span></td><td><span className="comparison-yes">✓</span></td></tr>
-                <tr><th scope="row">Dictado por voz con revisión</th><td>—</td><td><span className="comparison-yes">✓</span></td><td><span className="comparison-yes">✓</span></td></tr>
-                <tr><th scope="row">Tiendas PrestaShop cubiertas por la licencia</th><td>—</td><td>1</td><td>De 2 a 5</td></tr>
-                <tr><th scope="row">Perfiles de Chrome o Edge</th><td>Perfil donde está instalada</td><td>Hasta 6</td><td>Hasta 20</td></tr>
-                <tr><th scope="row">Duración de la licencia</th><td>No necesaria</td><td>Perpetua</td><td>Perpetua</td></tr>
-              </tbody>
-            </table>
-          </div>
+          <FpePlanComparison locale="es" storeName="Tienda" />
           <div className="license-flow" aria-label="Proceso de compra y activación">
             <span><b>1</b> Instala desde Chrome Web Store</span>
             <span><b>2</b> Prueba 14 días</span>
@@ -382,7 +366,7 @@ export default function ProductPage() {
           <p>Instala la extensión desde Chrome Web Store, conecta tu tienda y utiliza todas las funciones durante 14 días. Después puedes continuar con el modo gratuito o activar una licencia perpetua.</p>
         </div>
         <div className="product-cta-actions">
-          <a className="button button-light" href={fpeCheckoutLinks.chromeWebStore} target="_blank" rel="noopener noreferrer">Instalar extensión <span>↗</span></a>
+          <FpeProductActions copy={actionCopy} demoHref="#demostracion" footer />
           <span className="availability-status">Prueba completa de 14 días · sin tarjeta</span>
         </div>
       </section>

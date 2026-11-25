@@ -42,6 +42,15 @@ export function ContactForm() {
         <span>Cuéntanos el punto de partida</span>
         <small>Todos los campos con * son obligatorios</small>
       </div>
+      <p className="draft-intro">Prepararás un borrador en tu correo. Podrás revisarlo antes de enviarlo.</p>
+      <noscript>
+        <style>{".contact-form .contact-local-actions { display: none; }"}</style>
+        <p id="contact-draft-notice" className="contact-draft-notice">
+          Sin JavaScript, al pulsar «Preparar borrador» enviarás estos campos por HTTPS a Pep Logar.
+          El servidor los utilizará solo para preparar el borrador, sin guardar los datos ni enviar
+          el correo. Después podrás abrirlo en tu aplicación.
+        </p>
+      </noscript>
 
       <div className="form-grid">
         <label>
@@ -80,14 +89,6 @@ export function ContactForm() {
         <textarea name="message" required rows={5} placeholder="¿Qué ocurre hoy, dónde se pierde tiempo y qué resultado te gustaría conseguir?" />
       </label>
 
-      <noscript>
-        <style>{".contact-form .contact-local-actions { display: none; }"}</style>
-        <p id="contact-draft-notice" className="contact-draft-notice">
-          Sin JavaScript, al pulsar «Preparar borrador» enviarás estos campos por HTTPS a Pep Logar.
-          El servidor los utilizará solo para preparar el borrador, sin guardar los datos ni enviar
-          el correo. Podrás revisarlo en tu aplicación antes de enviarlo.
-        </p>
-      </noscript>
       <label className="consent">
         <input name="consent" type="checkbox" required />
         <span>Acepto que mis datos se utilicen únicamente para responder a esta consulta.</span>
@@ -106,8 +107,8 @@ export function ContactForm() {
         </div>
       </noscript>
       <div className="form-footer contact-local-actions">
-        <button type="submit">Preparar consulta <span aria-hidden="true">↗</span></button>
-        <small>Se abrirá tu aplicación de correo con el mensaje preparado. Esta web no almacena tus datos.</small>
+        <button type="submit">Abrir borrador en mi correo <span aria-hidden="true">↗</span></button>
+        <small>Esta web no almacena tus datos.</small>
       </div>
     </form>
   );

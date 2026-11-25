@@ -38,10 +38,14 @@ export default function PensionesLabPage() {
             Decide a qué edad se jubila la gente, cuánto se recauda y en qué se gasta.
             Compara año a año qué ocurre con las pensiones y la deuda de España entre 2026 y 2070.
           </p>
-          <p className="pension-device">La consola está pensada para un ordenador. En el móvil puedes consultar cómo funciona.</p>
-          <div className="pension-actions">
+          <p className="pension-device">Demarquía publica la guía para móvil y la consola para ordenador.</p>
+          <div className="pension-actions pension-actions-desktop">
             <a className="button button-dark" href={`${projectUrl}consola.html`}>Abrir la consola gratuita</a>
             <a className="pension-link" href={`${projectUrl}ayuda.html`}>Cómo funciona</a>
+          </div>
+          <div className="pension-actions pension-actions-mobile">
+            <a className="button button-dark" href={`${projectUrl}ayuda.html`}>Cómo funciona</a>
+            <a className="pension-link" href={`${projectUrl}consola.html`}>Abrir la consola gratuita</a>
           </div>
         </div>
         <figure>

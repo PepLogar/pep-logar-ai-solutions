@@ -1,6 +1,8 @@
 # Pep Logar AI Solutions
 
-Sitio corporativo de Pep Logar AI Solutions: desarrollo de software, agentes de IA, conexiones MCP y automatización de procesos empresariales.
+Web de Pep Logar AI Solutions. Desarrollamos software a medida para empresas, tanto aplicaciones tradicionales como soluciones con agentes de IA. La portada muestra ejemplos de ambas modalidades y enlaza el catálogo de productos propios.
+
+La [revisión de usabilidad y su implementación](docs/USABILIDAD-Y-PROPUESTA-COMERCIAL-2026-11-25.md#cambios-aplicados-el-25-de-noviembre) recoge los cambios de portada, catálogo, fichas y contacto, con capturas de móvil y escritorio.
 
 ## Desarrollo local
 
@@ -45,11 +47,11 @@ Si una interrupción deja `.production-export/` en disco, comprueba primero que 
 - `CONCEPTO.md`: posicionamiento, arquitectura de marca y decisiones de producto.
 - `tests/`: comprobaciones del HTML renderizado.
 
-El formulario prepara un borrador dirigido a `info@aisolutions.peplogar.com`. Con JavaScript activo, el navegador lo prepara localmente. Solo con JavaScript desactivado aparece el botón «Preparar borrador» junto al aviso de tratamiento por HTTPS. Tras aceptar la casilla y pulsarlo, los campos viajan en el cuerpo de un POST al servidor. PHP los procesa en memoria y devuelve una página con «Abrir borrador». La respuesta lleva `Cache-Control: no-store`. El visitante revisa y envía el mensaje en su aplicación de correo. Para escribir directamente también puede usar la dirección que figura junto al formulario.
+«Contacto» y «Cuéntanos qué tarea repites» llevan al formulario de la portada. Antes del primer campo se explica que el visitante preparará un borrador y podrá revisarlo. Con JavaScript activo, «Abrir borrador en mi correo» lo prepara localmente para `info@aisolutions.peplogar.com`. Con JavaScript desactivado se muestra el aviso de tratamiento por HTTPS y el botón «Preparar borrador». Tras aceptar la casilla y pulsarlo, los campos viajan en el cuerpo de un POST al servidor. PHP los procesa en memoria y devuelve una página con «Abrir borrador». La respuesta lleva `Cache-Control: no-store`. El visitante envía el mensaje en su aplicación de correo. «Escribir por correo» permite contactar directamente.
 
 ## Pensiones Lab en el catálogo
 
-La tarjeta «Software gratuito · Simulador web» en `/productos/` abre la [ficha de Pensiones Lab](https://aisolutions.peplogar.com/productos/pensiones-lab/). La ficha propone un primer ejercicio para comparar qué ocurre con la deuda pública al cambiar la edad de jubilación de 65 a 66 años. El botón «Abrir la consola gratuita» lleva directamente a la [consola de Demarquía](https://demarquia.org/pensioneslab/consola.html). La [ayuda](https://demarquia.org/pensioneslab/ayuda.html) y la [metodología](https://demarquia.org/pensioneslab/metodologia.html) también se mantienen en Demarquía.
+En `/productos/`, la tarjeta del simulador gratuito ofrece «Ver ficha» y acceso directo a los [primeros pasos en Demarquía](https://demarquia.org/pensioneslab/ayuda.html#pasos). La [ficha de Pensiones Lab](https://aisolutions.peplogar.com/productos/pensiones-lab/) propone comparar qué ocurre con la deuda pública al cambiar la edad de jubilación de 65 a 66 años. En móvil prioriza «Cómo funciona», que abre la [ayuda](https://demarquia.org/pensioneslab/ayuda.html). En escritorio destaca «Abrir la consola gratuita», que abre la [consola](https://demarquia.org/pensioneslab/consola.html). Ambas acciones están disponibles en las dos vistas.
 
 `public/productos/pensiones-lab/` contiene la captura real de la consola 1.80.0 del 25 de noviembre de 2026. `detalle.png` ilustra la tarjeta y la ficha. «Ampliar captura» abre `consola.png`, donde se ven los ajustes, los gráficos y la comparación de sistemas en 2050. Al actualizar las imágenes, conserva los nombres y revisa sus dimensiones y textos alternativos en ambas páginas.
 

@@ -1,17 +1,19 @@
 /* eslint-disable @next/next/no-html-link-for-pages, @next/next/no-img-element -- Native links preserve static Plesk navigation and the shared raster mark matches the extension identity. */
 
+import "./site-navigation.css";
+
 type SiteHeaderProps = {
   current?: "catalog" | "products";
   locale?: "es" | "en" | "pt" | "fr" | "it" | "de";
 };
 
 const chromeCopy = {
-  es: { nav: ["Qué hacemos", "Productos", "Cómo trabajamos", "Hablemos"], cta: "Explorar una solución", menu: "Menú", aria: "Navegación principal", privacy: "Privacidad de Frontend Product Editor + AI", terms: "Compra, soporte y devoluciones" },
-  en: { nav: ["What we do", "Products", "How we work", "Contact"], cta: "Explore a solution", menu: "Menu", aria: "Main navigation", privacy: "Product privacy (Spanish)", terms: "Purchase, support and refunds (Spanish)" },
-  pt: { nav: ["O que fazemos", "Produtos", "Como trabalhamos", "Contacto"], cta: "Explorar uma solução", menu: "Menu", aria: "Navegação principal", privacy: "Privacidade do produto (espanhol)", terms: "Compra, suporte e devoluções (espanhol)" },
-  fr: { nav: ["Nos solutions", "Produits", "Notre méthode", "Contact"], cta: "Explorer une solution", menu: "Menu", aria: "Navigation principale", privacy: "Confidentialité du produit (espagnol)", terms: "Achat, assistance et remboursements (espagnol)" },
-  it: { nav: ["Cosa facciamo", "Prodotti", "Come lavoriamo", "Contatti"], cta: "Esplora una soluzione", menu: "Menu", aria: "Navigazione principale", privacy: "Privacy del prodotto (spagnolo)", terms: "Acquisto, assistenza e rimborsi (spagnolo)" },
-  de: { nav: ["Was wir tun", "Produkte", "Arbeitsweise", "Kontakt"], cta: "Lösung entdecken", menu: "Menü", aria: "Hauptnavigation", privacy: "Produktdatenschutz (Spanisch)", terms: "Kauf, Support und Erstattung (Spanisch)" },
+  es: { nav: ["Qué hacemos", "Productos", "Cómo trabajamos", "Contacto"], menu: "Menú", aria: "Navegación principal", privacy: "Privacidad de Frontend Product Editor + AI", terms: "Compra, soporte y devoluciones" },
+  en: { nav: ["What we do", "Products", "How we work", "Contact"], menu: "Menu", aria: "Main navigation", privacy: "Product privacy (Spanish)", terms: "Purchase, support and refunds (Spanish)" },
+  pt: { nav: ["O que fazemos", "Produtos", "Como trabalhamos", "Contacto"], menu: "Menu", aria: "Navegação principal", privacy: "Privacidade do produto (espanhol)", terms: "Compra, suporte e devoluções (espanhol)" },
+  fr: { nav: ["Nos solutions", "Produits", "Notre méthode", "Contact"], menu: "Menu", aria: "Navigation principale", privacy: "Confidentialité du produit (espagnol)", terms: "Achat, assistance et remboursements (espagnol)" },
+  it: { nav: ["Cosa facciamo", "Prodotti", "Come lavoriamo", "Contatti"], menu: "Menu", aria: "Navigazione principale", privacy: "Privacy del prodotto (spagnolo)", terms: "Acquisto, assistenza e rimborsi (spagnolo)" },
+  de: { nav: ["Was wir tun", "Produkte", "Arbeitsweise", "Kontakt"], menu: "Menü", aria: "Hauptnavigation", privacy: "Produktdatenschutz (Spanisch)", terms: "Kauf, Support und Erstattung (Spanisch)" },
 } as const;
 
 function NavigationLinks({ current, className, locale = "es" }: SiteHeaderProps & { className: string }) {
@@ -39,9 +41,6 @@ export function SiteHeader({ current, locale = "es" }: SiteHeaderProps) {
         <span className="brand-unit">/ AI SOLUTIONS</span>
       </a>
       <NavigationLinks className="nav-links" current={current} locale={locale} />
-      <a className="nav-cta" href="mailto:info@aisolutions.peplogar.com?subject=Quiero%20conocer%20vuestras%20soluciones">
-        {labels.cta} <span aria-hidden="true">↗</span>
-      </a>
       <details className="mobile-menu">
         <summary>
           <span className="mobile-menu-label">{labels.menu}</span>

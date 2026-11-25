@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { ContactForm } from "./ContactForm";
 import { SiteFooter, SiteHeader } from "./SiteChrome";
+import "./home.css";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
@@ -8,84 +9,85 @@ export const metadata: Metadata = {
 
 const services = [
   {
-    number: "01",
-    title: "Agentes operativos",
-    text: "Sistemas que entienden un objetivo, consultan información, usan herramientas y completan tareas con supervisión humana.",
-    tags: ["Operaciones", "Back office", "Soporte"],
+    title: "Software a medida tradicional",
+    text: "Si tu equipo calcula cada presupuesto con las mismas reglas, podemos convertir esa hoja de cálculo en una aplicación que aplique las tarifas y prepare el documento.",
   },
   {
-    number: "02",
-    title: "Conexiones MCP",
-    text: "Conectamos la inteligencia con el software que ya utiliza tu equipo: ERP, CRM, correo, documentos y bases de datos.",
-    tags: ["ERP / CRM", "Datos", "Herramientas"],
+    title: "Software con agentes de IA",
+    text: "Si cada cliente pide las cosas de una manera distinta, un agente puede leer su correo, localizar las referencias y señalar lo que falta para que alguien revise el pedido.",
   },
   {
-    number: "03",
-    title: "Software a medida + IA",
-    text: "Creamos productos internos que combinan reglas de negocio, automatización e IA sin obligarte a cambiar toda tu empresa.",
-    tags: ["Aplicaciones", "Integraciones", "Control"],
+    title: "Conecta el correo con tus programas de gestión",
+    text: "Una herramienta puede consultar el stock en el ERP y dejar el pedido preparado para revisión. Usamos la API del programa o, cuando está disponible, una conexión MCP.",
   },
 ];
 
 const steps = [
-  ["01", "Descubrir", "Localizamos tareas repetitivas, cuellos de botella y decisiones que consumen tiempo."],
-  ["02", "Diseñar", "Dibujamos el flujo, sus límites, las herramientas y los puntos de validación humana."],
-  ["03", "Pilotar", "Construimos un primer agente sobre un proceso acotado y medimos el resultado real."],
-  ["04", "Escalar", "Conectamos nuevos procesos, reforzamos el control y transferimos conocimiento al equipo."],
+  ["01", "Elegir la tarea", "Revisamos contigo un ejemplo real y anotamos cuánto tiempo ocupa y qué errores hay que corregir."],
+  ["02", "Acordar las reglas", "Definimos qué datos necesita el programa, quién revisará el resultado y cuándo debe detenerse."],
+  ["03", "Probar con un caso", "Probamos una primera versión y comparamos el tiempo y las correcciones con el proceso anterior."],
+  ["04", "Decidir el siguiente paso", "Con esos resultados decides si conviene ajustar la herramienta o extenderla a más casos."],
 ];
 
 export default function Home() {
   return (
-    <main>
+    <main className="home-page">
       <SiteHeader />
 
       <section className="hero shell" id="inicio">
         <div className="hero-copy">
-          <p className="eyebrow"><span /> Nueva unidad · IA aplicada</p>
-          <h1>Menos tareas.<br />Más empresa.</h1>
+          <p className="eyebrow"><span /> Desarrollo de software a medida</p>
+          <h1>¿Cuántas veces copias los datos de un pedido?</h1>
           <p className="hero-lede">
-            Diseñamos software y agentes de IA que conectan tus herramientas, entienden tus procesos y hacen avanzar el trabajo.
+            Si un pedido llega por correo y alguien vuelve a teclearlo en el programa de gestión,
+            ahí podemos empezar. Desarrollamos <strong>software a medida tradicional</strong> y{" "}
+            <strong>software con agentes de IA</strong>. Tu equipo decide qué pasos se automatizan y cuáles necesitan revisión.
           </p>
           <div className="hero-actions">
-            <a className="button button-dark" href="mailto:info@aisolutions.peplogar.com?subject=Sesión%20de%20descubrimiento%20IA">Detectar una oportunidad <span>↗</span></a>
-            <a className="text-link" href="#metodo">Ver cómo trabajamos <span>↓</span></a>
-          </div>
-          <div className="hero-proof">
-            <span className="avatar-stack" aria-hidden="true"><i>IA</i><i>+</i><i>Tu</i></span>
-            <p><strong>Tecnología con propósito.</strong><br />El equipo decide. Los agentes ejecutan.</p>
+            <a className="button button-dark" href="/#contacto">Cuéntanos qué tarea repites <span aria-hidden="true">↓</span></a>
+            <a className="text-link" href="/productos/">Ver nuestros productos <span aria-hidden="true">→</span></a>
           </div>
         </div>
 
-        <div className="agent-stage" aria-label="Esquema de un agente conectado a herramientas de empresa">
-          <div className="stage-grid" />
-          <div className="status-pill"><span /> SISTEMA ACTIVO</div>
-          <div className="orbit orbit-one" />
-          <div className="orbit orbit-two" />
-          <div className="agent-core">
-            <span className="core-kicker">AGENTE</span>
-            <strong>Coordina</strong>
-            <small>razona · actúa · verifica</small>
-          </div>
-          <div className="tool-node node-erp"><span>ERP</span><small>Datos</small></div>
-          <div className="tool-node node-mail"><span>@</span><small>Correo</small></div>
-          <div className="tool-node node-crm"><span>CRM</span><small>Clientes</small></div>
-          <div className="tool-node node-docs"><span>DOC</span><small>Archivos</small></div>
-          <div className="activity-card">
-            <p><span className="pulse" /> FLUJO EN CURSO</p>
-            <strong>Pedido validado</strong>
-            <div className="progress"><i /></div>
-            <small>3 herramientas coordinadas · revisión lista</small>
-          </div>
-          <p className="stage-note">Conecta · decide · ejecuta · aprende</p>
-        </div>
+        <section className="order-example" aria-labelledby="order-example-title">
+          <p className="order-kicker">Ejemplo de flujo</p>
+          <h2 id="order-example-title">Un mismo pedido en dos formatos</h2>
+          <dl className="order-paths">
+            <div>
+              <dt>Software tradicional</dt>
+              <dd>Lee la referencia y la cantidad del formulario, comprueba el stock y aplica la tarifa.</dd>
+            </div>
+            <div>
+              <dt>Agente de IA</dt>
+              <dd>Interpreta el correo en texto libre y propone un borrador con las referencias y cantidades.</dd>
+            </div>
+          </dl>
+          <p className="order-review"><strong>Revisión humana</strong>Tu equipo revisa el borrador y confirma el pedido.</p>
+        </section>
       </section>
 
-      <section className="manifesto">
-        <div className="shell manifesto-grid">
-          <p className="section-label">La idea</p>
-          <div>
-            <h2>No necesitas “poner IA”.<br /><em>Necesitas que el trabajo fluya.</em></h2>
-            <p>Empezamos por el proceso, no por la tecnología. Detectamos dónde se pierde tiempo, conectamos lo que ya funciona y diseñamos una solución que tu equipo pueda entender, controlar y mejorar.</p>
+      <section className="home-software" aria-labelledby="home-products-title">
+        <div className="shell">
+          <h2 id="home-products-title">Software que ya puedes probar</h2>
+          <div className="home-products-grid">
+            <article>
+              <img src="/productos/fpe-ai/frontoffice-editor.png" width={1903} height={958}
+                alt="Panel del editor abierto sobre la ficha de un producto en PrestaShop." loading="lazy" />
+              <div>
+                <h3><a href="/productos/frontend-product-editor-ai/">Frontend Product Editor + AI</a></h3>
+                <p>Corrige el stock desde la ficha de PrestaShop. La prueba dura 14 días desde la primera conexión y se puede iniciar sin tarjeta.</p>
+                <a className="home-product-action" href="/productos/frontend-product-editor-ai/#demostracion">Ver la demo de 46 segundos <span aria-hidden="true">→</span></a>
+              </div>
+            </article>
+            <article>
+              <img src="/productos/pensiones-lab/detalle.png" width={1506} height={692}
+                alt="Ajuste de la edad de jubilación y gráfico de deuda pública en Pensiones Lab." loading="lazy" />
+              <div>
+                <h3><a href="/productos/pensiones-lab/">Pensiones Lab</a></h3>
+                <p>¿Qué cambia si retrasas un año la jubilación? Este simulador gratuito para ordenador te deja comparar escenarios de España hasta 2070.</p>
+                <a className="home-product-action" href="https://demarquia.org/pensioneslab/ayuda.html#pasos">Primeros pasos en Pensiones Lab <span aria-hidden="true">→</span></a>
+              </div>
+            </article>
           </div>
         </div>
       </section>
@@ -93,63 +95,23 @@ export default function Home() {
       <section className="services shell" id="capacidades">
         <div className="section-heading">
           <p className="section-label">Capacidades</p>
-          <h2>Tres formas de convertir<br />complejidad en avance.</h2>
+          <h2>Qué podemos desarrollar para tu equipo</h2>
         </div>
         <div className="service-grid">
           {services.map((service) => (
-            <article className="service-card" key={service.number}>
-              <span className="service-number">{service.number}</span>
-              <div className="service-icon" aria-hidden="true"><i /><i /><i /></div>
+            <article className="service-card" key={service.title}>
               <h3>{service.title}</h3>
               <p>{service.text}</p>
-              <div className="tag-list">{service.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
             </article>
           ))}
-        </div>
-      </section>
-
-      <section className="home-product shell" aria-labelledby="home-product-title">
-        <div className="home-product-copy">
-          <p className="eyebrow light"><span /> Producto propio</p>
-          <h2 id="home-product-title">Edita PrestaShop<br />desde el catálogo.</h2>
-          <p>Pep Logar Frontend Product Editor + AI elimina el salto constante entre la tienda pública y el Back-Office. Sin módulos, compatible con PrestaShop 1.6, 1.7, 8 y 9.</p>
-          <a className="button button-light" href="/productos/frontend-product-editor-ai">Ver el producto <span>↗</span></a>
-        </div>
-        <a className="home-product-visual" href="/productos/frontend-product-editor-ai" aria-label="Conocer Frontend Product Editor + AI">
-          <img src="/productos/fpe-ai/frontoffice-editor.png" alt="Editor de producto PrestaShop abierto desde el catálogo" />
-          <span>Chrome · Edge · IA configurable</span>
-        </a>
-      </section>
-
-      <section className="example shell">
-        <div className="example-card">
-          <div className="example-copy">
-            <p className="eyebrow light"><span /> Ejemplo de aplicación</p>
-            <h2>Un pedido entra.<br />El trabajo se organiza.</h2>
-            <p>Un agente interpreta la solicitud, consulta disponibilidad, contrasta las condiciones del cliente y prepara la operación. Solo pide ayuda cuando aparece una excepción.</p>
-            <ul>
-              <li><span>✓</span> Menos traspasos manuales</li>
-              <li><span>✓</span> Trazabilidad de cada decisión</li>
-              <li><span>✓</span> Personas centradas en excepciones</li>
-            </ul>
-          </div>
-          <div className="flow" aria-label="Flujo: solicitud, agente, herramientas y validación">
-            <div className="flow-step"><span>01</span><p><small>ENTRADA</small>Solicitud recibida</p><i>Comercial</i></div>
-            <div className="flow-line"><b /></div>
-            <div className="flow-step active"><span>02</span><p><small>AGENTE</small>Analiza y coordina</p><i>IA + reglas</i></div>
-            <div className="flow-line"><b /></div>
-            <div className="flow-step"><span>03</span><p><small>ACCIÓN</small>ERP · CRM · correo</p><i>Herramientas</i></div>
-            <div className="flow-line"><b /></div>
-            <div className="flow-step"><span>04</span><p><small>CONTROL</small>Validación humana</p><i>Excepción</i></div>
-          </div>
         </div>
       </section>
 
       <section className="method shell" id="metodo">
         <div className="section-heading method-heading">
           <p className="section-label">El método</p>
-          <h2>Empezar pequeño.<br />Demostrar valor. Escalar.</h2>
-          <p>Un camino pragmático para pasar de una oportunidad difusa a un sistema útil, medible y gobernable.</p>
+          <h2>Cómo trabajamos contigo</h2>
+          <p>Empezamos por una tarea que conozcas bien, desde que llega la solicitud hasta que alguien aprueba el resultado.</p>
         </div>
         <div className="steps">
           {steps.map(([number, title, text]) => (
@@ -158,18 +120,22 @@ export default function Home() {
             </article>
           ))}
         </div>
+        <div className="home-method-close">
+          <p>Menos tareas. Más empresa.</p>
+          <a className="text-link" href="/#contacto">Plantear un primer piloto <span aria-hidden="true">↓</span></a>
+        </div>
       </section>
 
       <section className="principles">
         <div className="shell principles-grid">
           <div>
             <p className="section-label">Principios</p>
-            <h2>Autonomía,<br />con criterio.</h2>
+            <h2>Qué queda bajo tu control</h2>
           </div>
           <div className="principle-list">
-            <article><span>01</span><div><h3>Humano en el circuito</h3><p>Definimos qué puede resolver el agente y qué requiere aprobación.</p></div></article>
-            <article><span>02</span><div><h3>Integración progresiva</h3><p>Convivimos con tus sistemas; no planteamos una sustitución total.</p></div></article>
-            <article><span>03</span><div><h3>Decisiones visibles</h3><p>Registramos acciones, fuentes y excepciones para mantener el control.</p></div></article>
+            <article><span>01</span><div><h3>Quién da el visto bueno</h3><p>Eliges qué acciones necesitan la aprobación de una persona y quién puede dársela.</p></div></article>
+            <article><span>02</span><div><h3>Qué herramientas se conectan</h3><p>Decidimos contigo qué puede consultar o modificar la aplicación en cada sistema.</p></div></article>
+            <article><span>03</span><div><h3>Cómo se revisa un error</h3><p>Definimos qué pasos registrar para poder localizar dónde falló el proceso.</p></div></article>
           </div>
         </div>
       </section>
@@ -178,12 +144,11 @@ export default function Home() {
         <div className="closing-card">
           <div className="closing-intro">
             <p className="eyebrow light"><span /> Primera conversación</p>
-            <h2>¿Qué proceso te gustaría<br />que avanzara solo?</h2>
-            <p>En una sesión breve identificamos una oportunidad concreta, sus conexiones y el alcance razonable de un primer piloto.</p>
+            <h2>¿Qué tarea repites?</h2>
+            <p>Cuéntanos qué recibes, en qué programa trabajas y qué resultado necesitas. Con ese ejemplo podremos hablar de un primer piloto.</p>
             <div className="contact-links" aria-label="Datos de contacto">
-              <a href="mailto:info@aisolutions.peplogar.com"><small>Email</small>info@aisolutions.peplogar.com</a>
+              <a href="mailto:info@aisolutions.peplogar.com"><small>Escribir por correo</small>info@aisolutions.peplogar.com</a>
               <a href="tel:+34911419634"><small>Teléfono</small>(+34) 91 141 96 34</a>
-              <a href="https://aisolutions.peplogar.com"><small>Web</small>aisolutions.peplogar.com</a>
             </div>
           </div>
           <ContactForm />

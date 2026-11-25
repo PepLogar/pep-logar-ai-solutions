@@ -53,3 +53,29 @@ El menú móvil abre sus cuatro destinos. En el catálogo, el enlace activo «Pr
 ## Alcance de la revisión
 
 Las once páginas del mapa público respondieron HTTP 200. Se revisaron portada, catálogo, Pensiones Lab, editor en español y sus versiones en inglés, portugués, francés, italiano y alemán, privacidad y condiciones. Se inspeccionaron los destinos de instalación y de ambos planes, con comprobación hasta la redirección al proveedor de pago. Las observaciones de móvil corresponden a emulación a 360 y 390 px. Las prioridades expresan juicio de diseño. Las ventas, el abandono y la conversión requerirían datos de uso. [Mapa público](https://aisolutions.peplogar.com/sitemap.xml)
+
+## Cambios aplicados el 25 de noviembre
+
+### Qué ve el visitante
+
+- **Portada.** La cabecera dice «Desarrollo de software a medida». El ejemplo de un pedido explica cuándo conviene una aplicación tradicional con reglas y cuándo puede ayudar un agente de IA. «Cuéntanos qué tarea repites» lleva al formulario y «Ver nuestros productos» al catálogo. A continuación se muestran los dos productos y ejemplos de desarrollos para empresas.
+- **Catálogo.** Cada producto presenta su utilidad, los requisitos, una miniatura ampliable y el enlace a su ficha. «Ver demo de 46 s» abre la sección del vídeo del editor. «Primeros pasos» abre directamente la sección correspondiente de la ayuda en Demarquía.
+- **Fichas.** En móvil se da prioridad al vídeo del editor y a la ayuda de Pensiones Lab. En escritorio se destacan la instalación y la consola. La ficha del editor explica junto al botón que la instalación requiere Chrome o Edge de escritorio. En los seis idiomas, la comparativa agrupa los tres valores bajo el nombre de cada función en móvil y utiliza una tabla de columnas en escritorio.
+- **Contacto.** El menú y las llamadas principales llevan al mismo formulario. La explicación del borrador está antes del primer campo. Con JavaScript, «Abrir borrador en mi correo» prepara un mensaje local. Con JavaScript desactivado se explica el tratamiento por HTTPS y se exige consentimiento antes del POST para preparar el borrador. «Escribir por correo» permite abrir directamente la aplicación de correo.
+
+### Comprobación de la exportación para Plesk
+
+Las pruebas se realizaron sobre `production/` servida por HTTP local. Los enlaces a Demarquía se siguieron hasta su destino público. Los perfiles móviles son emulados.
+
+| Entorno | Recorrido comprobado |
+|---|---|
+| Chrome, 360 × 800 y 1440 × 900 | Desde la portada se llega al ancla de contacto y al catálogo. La demo empieza a reproducirse y dura 46 segundos. Cambia la acción destacada de las dos fichas según el ancho. «Ampliar captura» abre el PNG completo de 2160 × 825 px. |
+| WebKit táctil, 320 y 390 px | Las dos utilidades del catálogo son visibles en la primera pantalla de 320 × 640. Las dos miniaturas abren y cierran sus ampliaciones. «Primeros pasos» llega a la sección de Demarquía y «Cómo funciona» abre la ayuda. El aviso y el consentimiento del formulario siguen disponibles al desactivar JavaScript. |
+| Comparativa de licencias | En español y alemán, las nueve filas con sus tres valores caben a 360 px sin desplazar la tabla lateralmente. En escritorio se leen mediante cabeceras de columna. |
+| Exportación | Las once páginas se generaron y pasaron las siete pruebas del proyecto, incluidas las del formulario sin JavaScript, las rutas traducidas y la recuperación de una exportación fallida. |
+
+A 360 px de ancho, los dos enlaces «Ver ficha» empiezan a **310 y 520 px** del inicio del documento. En la revisión inicial estaban a 1.164 y 1.995 px. A 1440 px, las dos acciones quedan alineadas en la misma fila.
+
+La comprobación de tipos de `app/` pasó. La ejecución global de TypeScript también incluye `db/` y `worker/` y señala tres tipos de Cloudflare sin resolver en esos archivos. La exportación estática de Plesk se generó correctamente.
+
+**Capturas de la versión comprobada.** [Portada en móvil](evidencias/usabilidad-2026-11-25/portada-360.jpg) · [Portada en escritorio](evidencias/usabilidad-2026-11-25/portada-1440.jpg) · [Catálogo en móvil](evidencias/usabilidad-2026-11-25/catalogo-360.jpg) · [Catálogo en escritorio](evidencias/usabilidad-2026-11-25/catalogo-1440.jpg) · [Planes en móvil](evidencias/usabilidad-2026-11-25/planes-360.jpg) · [Formulario en móvil](evidencias/usabilidad-2026-11-25/contacto-360.jpg)

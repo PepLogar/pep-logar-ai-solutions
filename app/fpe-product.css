@@ -1,0 +1,120 @@
+.product-page .fpe-actions {
+  display: grid;
+  justify-items: start;
+  align-items: start;
+  gap: 10px;
+}
+
+.fpe-actions-desktop,
+.fpe-actions-mobile {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 20px;
+  max-width: 100%;
+}
+
+.fpe-actions-mobile,
+.fpe-comparison .fpe-plan-label {
+  display: none;
+}
+
+.fpe-actions .button {
+  max-width: 100%;
+  min-width: 0;
+  text-align: center;
+}
+
+.fpe-device-note {
+  margin: 0;
+  color: #47516b;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.fpe-actions .text-link {
+  border-color: currentColor;
+}
+
+.fpe-actions-footer .fpe-device-note {
+  color: #d8def3;
+}
+
+.fpe-guide {
+  margin-top: 4px;
+}
+
+@media (max-width: 760px), (hover: none) and (pointer: coarse) and (max-width: 1100px) {
+  .fpe-actions-desktop {
+    display: none;
+  }
+
+  .fpe-actions-mobile {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 850px) {
+  .product-page .fpe-comparison-wrap {
+    overflow: visible;
+    border: 0;
+    margin: 0;
+  }
+
+  .product-page .fpe-comparison {
+    display: block;
+    position: relative;
+    min-width: 0;
+    background: transparent;
+  }
+
+  /* The native headers stay available for table navigation by screen readers. */
+  .fpe-comparison thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  .fpe-comparison tbody {
+    display: grid;
+    gap: 12px;
+  }
+
+  .fpe-comparison tbody tr {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    border: 1px solid rgba(255, 255, 255, .24);
+    background: #111a49;
+  }
+
+  .product-page .fpe-comparison tbody th {
+    grid-column: 1 / -1;
+    width: auto;
+    padding: 12px;
+    border-right: 0;
+  }
+
+  .product-page .fpe-comparison tbody td {
+    padding: 10px 8px;
+    border-bottom: 0;
+    text-align: left;
+    overflow-wrap: anywhere;
+  }
+
+  .product-page .fpe-comparison tbody td:last-child {
+    border-right: 0;
+  }
+
+  .fpe-comparison .fpe-plan-label {
+    display: block;
+    margin-bottom: 4px;
+    color: white;
+    font-size: 12px;
+    font-weight: 700;
+  }
+}

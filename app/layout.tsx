@@ -5,22 +5,24 @@ import "./globals.css";
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
+const title = "Software a medida y agentes de IA | Pep Logar AI Solutions";
+const description = "Desarrollamos software a medida para empresas, desde aplicaciones de gestión e integraciones tradicionales hasta agentes de IA que usan tus herramientas con la supervisión de tu equipo.";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://aisolutions.peplogar.com"),
-  title: "Pep Logar AI Solutions | Software e IA que hacen avanzar el trabajo",
-  description: "Diseñamos agentes, conexiones MCP y software potenciado con IA para automatizar procesos de empresa de forma útil, progresiva y controlable.",
+  title,
+  description,
   icons: {
     icon: "/pep-logar-logo.png",
     apple: "/pep-logar-logo.png",
   },
   openGraph: {
-    title: "Menos tareas. Más empresa.",
-    description: "Software y agentes de IA que conectan tus herramientas y hacen avanzar el trabajo.",
+    title,
+    description,
     type: "website",
     images: [{ url: "/og.png", width: 1732, height: 908, alt: "Pep Logar AI Solutions — Menos tareas. Más empresa." }],
   },
-  twitter: { card: "summary_large_image", title: "Menos tareas. Más empresa.", description: "Software e IA aplicada para procesos que avanzan.", images: ["/og.png"] },
+  twitter: { card: "summary_large_image", title, description, images: ["/og.png"] },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

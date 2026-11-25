@@ -42,6 +42,13 @@
   margin-top: 1rem;
 }
 
+.pension-product .pension-actions-mobile { display: none; }
+.pension-product .pension-actions .pension-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+
 .pension-product .pension-device,
 .pension-product figcaption {
   color: #47516b;
@@ -116,6 +123,8 @@
 }
 
 @media (max-width: 760px) {
+  .pension-product .pension-actions-desktop { display: none; }
+  .pension-product .pension-actions-mobile { display: flex; gap: .25rem 1rem; }
   .pension-product .pension-intro,
   .pension-product .pension-experiment,
   .pension-product .pension-project {
