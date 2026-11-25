@@ -3,11 +3,15 @@ import { access, readFile } from "node:fs/promises";
 import test from "node:test";
 
 function assertContactFallback(html) {
-  const [form] = html.match(/<form\b[^>]*class="contact-form"[^>]*>/i) ?? [];
+  const [form] = html.match(/<form\b[^>]*class="contact-form"[^>]*>[\s\S]*?<\/form>/i) ?? [];
   assert.ok(form, "the contact form is available before JavaScript loads");
-  assert.match(form, /\baction="mailto:info@aisolutions\.peplogar\.com"/i);
-  assert.match(form, /\bmethod="post"/i);
-  assert.match(form, /\benctype="text\/plain"/i);
+  const noScriptBlocks = form.match(/<noscript\b[^>]*>[\s\S]*?<\/noscript>/gi) ?? [];
+  const fallback = noScriptBlocks.join("");
+  assert.match(fallback, /sin guardar los datos ni enviar el correo/i);
+  assert.match(fallback, /<button\b(?=[^>]*formaction="https:\/\/aisolutions\.peplogar\.com\/contacto\/borrador\.php")(?=[^>]*formmethod="post")(?=[^>]*formenctype="application\/x-www-form-urlencoded")[^>]*>/i);
+  const withScripts = form.replace(/<noscript\b[^>]*>[\s\S]*?<\/noscript>/gi, "");
+  assert.match(withScripts, /<form\b[^>]*\baction="mailto:info@aisolutions\.peplogar\.com"/i);
+  assert.doesNotMatch(withScripts, /borrador\.php/i);
 }
 
 async function render(pathname = "/") {

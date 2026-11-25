@@ -80,12 +80,32 @@ export function ContactForm() {
         <textarea name="message" required rows={5} placeholder="¿Qué ocurre hoy, dónde se pierde tiempo y qué resultado te gustaría conseguir?" />
       </label>
 
+      <noscript>
+        <style>{".contact-form .contact-local-actions { display: none; }"}</style>
+        <p id="contact-draft-notice" className="contact-draft-notice">
+          Sin JavaScript, al pulsar «Preparar borrador» enviarás estos campos por HTTPS a Pep Logar.
+          El servidor los utilizará solo para preparar el borrador, sin guardar los datos ni enviar
+          el correo. Podrás revisarlo en tu aplicación antes de enviarlo.
+        </p>
+      </noscript>
       <label className="consent">
         <input name="consent" type="checkbox" required />
         <span>Acepto que mis datos se utilicen únicamente para responder a esta consulta.</span>
       </label>
 
-      <div className="form-footer">
+      <noscript>
+        <div className="form-footer">
+          <button
+            type="submit"
+            formAction="https://aisolutions.peplogar.com/contacto/borrador.php"
+            formMethod="post"
+            formEncType="application/x-www-form-urlencoded"
+            aria-describedby="contact-draft-notice"
+          >Preparar borrador <span aria-hidden="true">→</span></button>
+          <small>Hasta 2000 caracteres en la consulta.</small>
+        </div>
+      </noscript>
+      <div className="form-footer contact-local-actions">
         <button type="submit">Preparar consulta <span aria-hidden="true">↗</span></button>
         <small>Se abrirá tu aplicación de correo con el mensaje preparado. Esta web no almacena tus datos.</small>
       </div>

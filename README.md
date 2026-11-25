@@ -31,7 +31,7 @@ npm run build:production
 ```
 
 En Plesk, configura como raíz de documentos la carpeta `production` del
-repositorio. No requiere Node.js ni un proceso de servidor en producción.
+repositorio y activa PHP para `contacto/borrador.php`. Las páginas y los recursos se sirven como archivos estáticos. El formulario sin JavaScript requiere PHP 7.4 o posterior. Node.js solo se utiliza para compilar.
 
 El exportador prepara las diez páginas en `.production-export/next`. Solo después de validar su HTML sustituye `production/`. Si falla la generación, sigue disponible la versión anterior. Si falla la sustitución, el exportador intenta restaurarla.
 
@@ -45,4 +45,4 @@ Si una interrupción deja `.production-export/` en disco, comprueba primero que 
 - `CONCEPTO.md`: posicionamiento, arquitectura de marca y decisiones de producto.
 - `tests/`: comprobaciones del HTML renderizado.
 
-El formulario prepara un borrador dirigido a `info@aisolutions.peplogar.com` en la aplicación de correo del visitante. Con JavaScript disponible, organiza los campos y añade el asunto. Con JavaScript desactivado, el navegador utiliza el mismo destinatario y entrega los campos como texto al gestor de correo. El visitante puede revisar el mensaje antes de enviarlo. En la sección de contacto también figura el correo para copiarlo o escribir directamente.
+El formulario prepara un borrador dirigido a `info@aisolutions.peplogar.com`. Con JavaScript activo, el navegador lo prepara localmente. Solo con JavaScript desactivado aparece el botón «Preparar borrador» junto al aviso de tratamiento por HTTPS. Tras aceptar la casilla y pulsarlo, los campos viajan en el cuerpo de un POST al servidor. PHP los procesa en memoria y devuelve una página con «Abrir borrador». La respuesta lleva `Cache-Control: no-store`. El visitante revisa y envía el mensaje en su aplicación de correo. Para escribir directamente también puede usar la dirección que figura junto al formulario.
