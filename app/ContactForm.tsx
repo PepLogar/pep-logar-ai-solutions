@@ -31,7 +31,13 @@ export function ContactForm() {
   }
 
   return (
-    <form className="contact-form" onSubmit={prepareEmail}>
+    <form
+      className="contact-form"
+      action={`mailto:${CONTACT_EMAIL}`}
+      method="post"
+      encType="text/plain"
+      onSubmit={prepareEmail}
+    >
       <div className="form-heading">
         <span>Cuéntanos el punto de partida</span>
         <small>Todos los campos con * son obligatorios</small>

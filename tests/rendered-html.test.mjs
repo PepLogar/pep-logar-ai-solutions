@@ -2,6 +2,14 @@ import assert from "node:assert/strict";
 import { access, readFile } from "node:fs/promises";
 import test from "node:test";
 
+function assertContactFallback(html) {
+  const [form] = html.match(/<form\b[^>]*class="contact-form"[^>]*>/i) ?? [];
+  assert.ok(form, "the contact form is available before JavaScript loads");
+  assert.match(form, /\baction="mailto:info@aisolutions\.peplogar\.com"/i);
+  assert.match(form, /\bmethod="post"/i);
+  assert.match(form, /\benctype="text\/plain"/i);
+}
+
 async function render(pathname = "/") {
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);
   workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}`);
@@ -32,7 +40,7 @@ test("server-renders the Pep Logar AI Solutions concept", async () => {
   assert.match(html, /Todo en Tinta Pep Logar S\.L\./);
   assert.match(html, /B86378981/);
   assert.match(html, /91 141 96 34/);
-  assert.match(html, /<form class="contact-form"/);
+  assertContactFallback(html);
   assert.match(html, /<input(?=[^>]*name="email")(?=[^>]*type="email")[^>]*>/);
   assert.match(html, /<select(?=[^>]*name="interest")[^>]*>/);
   assert.match(html, /<input(?=[^>]*name="consent")(?=[^>]*type="checkbox")[^>]*>/);
@@ -135,19 +143,27 @@ test("renders accessible desktop and mobile navigation on every public route", a
 
 test("server-renders every localized product page with its own copy, video and hreflang links", async () => {
   const routes = [
-    ["/en/products/frontend-product-editor-ai", "Fix the product", "demo-en.mp4", "lang=\"en\""],
-    ["/pt/produtos/frontend-product-editor-ai", "Corrija o produto", "demo-pt.mp4", "lang=\"pt-PT\""],
-    ["/fr/produits/frontend-product-editor-ai", "Corrigez le produit", "demo-fr.mp4", "lang=\"fr\""],
-    ["/it/prodotti/frontend-product-editor-ai", "Correggi il prodotto", "demo-it.mp4", "lang=\"it\""],
-    ["/de/produkte/frontend-product-editor-ai", "Korrigieren Sie das Produkt", "demo-de.mp4", "lang=\"de\""],
+    ["/en/products/frontend-product-editor-ai", "Fix the product", "demo-en.mp4", "en", "PDF in Spanish", "One-time payment", "Privacy policy", "Purchase terms"],
+    ["/pt/produtos/frontend-product-editor-ai", "Corrija o produto", "demo-pt.mp4", "pt-PT", "PDF em espanhol", "Pagamento único", "Política de privacidade", "Condições de compra"],
+    ["/fr/produits/frontend-product-editor-ai", "Corrigez le produit", "demo-fr.mp4", "fr", "PDF en espagnol", "Paiement unique", "Politique de confidentialité", "Conditions d’achat"],
+    ["/it/prodotti/frontend-product-editor-ai", "Correggi il prodotto", "demo-it.mp4", "it", "PDF in spagnolo", "Pagamento unico", "Informativa sulla privacy", "Condizioni di acquisto"],
+    ["/de/produkte/frontend-product-editor-ai", "Korrigieren Sie das Produkt", "demo-de.mp4", "de", "PDF auf Spanisch", "Einmalzahlung", "Datenschutzerklärung", "Kaufbedingungen"],
   ];
-  for (const [pathname, promise, video, language] of routes) {
+  for (const [pathname, promise, video, language, guide, payment, privacy, terms] of routes) {
     const response = await render(pathname);
     assert.equal(response.status, 200);
     const html = await response.text();
     assert.match(html, new RegExp(promise));
     assert.match(html, new RegExp(video.replace(".", "\\.")));
-    assert.match(html, new RegExp(language));
+    assert.ok(html.includes('<html lang="' + language + '">'), pathname);
+    const [navigation] = html.match(/<nav class="nav shell"[\s\S]*?<\/nav>/) ?? [];
+    assert.ok(navigation, pathname);
+    assert.equal(navigation.match(/href="\/productos\/"/g)?.length, 2, pathname);
+    assert.ok(html.includes(guide), pathname);
+    assert.equal(html.split("<small>" + payment + "</small>").length - 1, 2, pathname);
+    for (const legalLabel of [privacy, terms]) {
+      assert.ok(html.includes(">" + legalLabel + "</a>"), pathname);
+    }
     assert.match(html, /rel="alternate" hrefLang="(?:en|pt-PT|fr|it|de)"/i);
     assert.match(html, /Frontend Product Editor \+ AI/);
     assert.match(html, /89 €/);
@@ -191,6 +207,11 @@ test("exports every public commercial route", async () => {
     "../production/de/produkte/frontend-product-editor-ai/index.html",
   ];
   const renderedPages = await Promise.all(publicFiles.map(file => readFile(new URL(file, import.meta.url), "utf8")));
+  assertContactFallback(renderedPages[0]);
+  const documentLanguages = ["es", "es", "es", "es", "es", "en", "pt-PT", "fr", "it", "de"];
+  for (const [index, html] of renderedPages.entries()) {
+    assert.ok(html.includes('<html lang="' + documentLanguages[index] + '">'), publicFiles[index]);
+  }
   assert.match(renderedPages[2], /Frontend Product Editor \+ AI/);
   assert.match(renderedPages[3], /Privacidad del producto/);
   assert.match(renderedPages[4], /Compra, soporte/);

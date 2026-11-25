@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-html-link-for-pages, @next/next/no-img-element -- Native links preserve static Plesk navigation and the shared raster mark matches the extension identity. */
 
 type SiteHeaderProps = {
-  current?: "products";
+  current?: "catalog" | "products";
   locale?: "es" | "en" | "pt" | "fr" | "it" | "de";
 };
 
@@ -14,15 +14,14 @@ const chromeCopy = {
   de: { nav: ["Was wir tun", "Produkte", "Arbeitsweise", "Kontakt"], cta: "Lösung entdecken", menu: "Menü", aria: "Hauptnavigation", privacy: "Produktdatenschutz (Spanisch)", terms: "Kauf, Support und Erstattung (Spanisch)" },
 } as const;
 
-const productPaths = { es: "/productos/", en: "/en/products/frontend-product-editor-ai/", pt: "/pt/produtos/frontend-product-editor-ai/", fr: "/fr/produits/frontend-product-editor-ai/", it: "/it/prodotti/frontend-product-editor-ai/", de: "/de/produkte/frontend-product-editor-ai/" } as const;
-
 function NavigationLinks({ current, className, locale = "es" }: SiteHeaderProps & { className: string }) {
   const labels = chromeCopy[locale].nav;
-  const navigation = [["/#capacidades", labels[0]], [productPaths[locale], labels[1]], ["/#metodo", labels[2]], ["/#contacto", labels[3]]] as const;
+  const navigation = [["/#capacidades", labels[0]], ["/productos/", labels[1]], ["/#metodo", labels[2]], ["/#contacto", labels[3]]] as const;
+  const catalogCurrent = current === "catalog" ? "page" : current === "products" ? "location" : undefined;
   return (
     <div className={className}>
       {navigation.map(([href, label]) => (
-        <a key={href} href={href} aria-current={href === productPaths[locale] && current === "products" ? "page" : undefined}>
+        <a key={href} href={href} hrefLang="es" aria-current={href === "/productos/" ? catalogCurrent : undefined}>
           {label}
         </a>
       ))}

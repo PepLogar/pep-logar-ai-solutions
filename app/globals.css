@@ -82,8 +82,8 @@ a { color:inherit; text-decoration:none; }
 .contact-links a { font-size:11px;color:#eef2ff;transition:color .2s; }.contact-links a:hover { color:var(--lime); }.contact-links small { display:block;margin-bottom:6px;color:#8f9cc5;font:600 8px var(--font-geist-mono);letter-spacing:.12em;text-transform:uppercase; }
 .footer { min-height:190px;display:grid;grid-template-columns:.85fr 1.25fr 1fr;gap:52px;align-items:center;border-top:1px solid var(--line);font-size:11px;color:#64719a; }
 .footer-address { display:flex;flex-direction:column;gap:7px;font-style:normal;line-height:1.45; }.footer-address strong { color:var(--ink);font-size:12px; }.footer-meta { display:flex;flex-direction:column;align-items:flex-end;gap:7px;text-align:right; }.footer-meta a:hover { color:var(--ink); }.footer-meta p { margin:8px 0 0; }
-.nav-links a[aria-current="page"] { color:var(--lime);font-weight:750; }
-.mobile-menu-links a[aria-current="page"] { color:var(--lime);font-weight:750; }
+.nav-links a[aria-current] { color:var(--lime);font-weight:750; }
+.mobile-menu-links a[aria-current] { color:var(--lime);font-weight:750; }
 .catalog-hero { padding-block:78px 64px; }
 .catalog-hero-grid { display:grid;grid-template-columns:1.4fr .6fr;gap:90px;align-items:end; }
 .catalog-hero h1 { margin:0;font-size:clamp(52px,6vw,82px);line-height:.94;letter-spacing:-.065em;font-weight:560; }

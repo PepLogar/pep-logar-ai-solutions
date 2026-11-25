@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function ProductsPage() {
   return (
     <main>
-      <SiteHeader current="products" />
+      <SiteHeader current="catalog" />
 
       <section className="catalog-hero shell">
         <p className="eyebrow"><span /> Productos propios</p>
